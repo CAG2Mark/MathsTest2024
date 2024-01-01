@@ -1,0 +1,121 @@
+:root {
+    --textarea-radius: 8px;
+    --textarea-padding: 12px;
+}
+
+#math-input-template {
+    display: none;
+}
+
+.math-input > .math-input-textarea {
+    resize: none;
+    color: white;
+    background-color: #292929;
+    border-style: none;
+    border-radius: calc(var(--textarea-radius) - 2px) calc(var(--textarea-radius) - 2px) 0 0;
+
+    padding: var(--textarea-padding);
+
+    position: relative;
+    z-index: 1;
+
+    height: 100%;
+
+    margin-top: 0;
+}
+
+.math-input {
+    transition: border-color 100ms ease;
+    border-radius: var(--textarea-radius);
+    border-style: solid;
+    border-color: #494949;
+    border-width: 2px;
+
+    display: flex;
+    flex-direction: column;
+
+    position: relative;
+
+    box-sizing: border-box;
+}
+
+.math-input:hover {
+    border-color: #5c5c5c;
+}
+
+.math-input:focus-within {
+    border-color: #2d6cc0;
+}
+
+.math-input > .math-input-output-wrap {
+    color: white;
+    background-color: #191919;
+    border-style: none;
+    border-radius: 0 0 var(--textarea-radius) var(--textarea-radius);
+
+    height: 80px;
+    overflow: scroll;
+
+    position: relative;
+
+    box-sizing: border-box;
+}
+
+.monospaced {
+    font-size: calc(var(--font-size) - 1px);
+    font-family: 'JetBrainsMono', Consolas, Menlo, 'Courier New', Courier, monospace;
+}
+
+.math-input-error-area {
+    padding: var(--textarea-padding);
+}
+
+.math-input-error-box, .math-input-error-box > * {
+    white-space: pre;
+}
+
+.math-input-error-msg {
+    padding-bottom: 0;
+    margin-bottom: 0;
+    color: #aaaaaa;
+}
+
+.error-highight {
+    background-color: #ff00005b;
+    border-radius: 4px;
+    position: relative;
+    z-index: 2;
+}
+
+.error-text {
+    position: relative;
+    z-index: 2;
+}
+
+.math-input > .math-input-textarea:focus {
+    border-style: none;
+    outline: none;
+}
+
+.math-input-tex-area {
+    overflow-y: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+
+    padding: var(--textarea-padding);
+
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.math-input-tex-area > .katex-display {
+    margin: 0;
+}
+
+#math-input-test {
+    margin: 20px; /* temp */
+    width: 600px;
+    height: 160px;
+}

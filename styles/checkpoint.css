@@ -1,0 +1,84 @@
+#checkpoint-area-template {
+    display: none;
+}
+
+.checkpoint-output-box {
+    width: 100%;
+    height: 130px;
+    background-color: #161616;
+    border-radius: var(--textarea-radius);
+    border-style: solid;
+    border-color: #393939;
+    border-width: 2px;
+
+    box-sizing: border-box;
+    padding: 12px;
+
+    margin-top: 8px;
+}
+
+.check-answers-button {
+    border: solid;
+    border-width: 2px;
+    border-color: transparent;
+
+    background-color: #232323;
+    text-align: left;
+    font-size: var(--font-size);
+    color: white;
+    font-family: inherit;
+
+    transition: border-color 100ms ease, background-color 100ms ease;
+
+    border-radius: 8px;
+    padding: 6px 8px;
+    min-height: 40px;
+    width: 100%;
+    margin: 2px 0;
+    display: block;
+    box-sizing: border-box;
+
+    cursor: pointer;
+
+    position: relative;
+
+    z-index: 2;
+
+    user-select: none;
+
+    font-weight: 500;
+    
+    text-align: center;
+}
+
+.check-answers-button:hover {
+    border-color: #3f3f3f;
+    background-color: #282828;
+}
+
+.check-answers-button:active {
+    border-color: #595959;
+    background-color: #393939;
+}
+
+.checkpoint-page .inline-circle {
+    font-family: var(--global-font);
+    font-size: var(--font-size);
+}
+
+.checkpoint-error-box, .checkpoint-error-box > * {
+    white-space: pre;
+}
+
+.checkpoint-error-msg {
+    padding-bottom: 0;
+    margin-bottom: 0;
+    color: #aaaaaa;
+}
+
+.checkpoint-page hr {
+    height: 2px;
+    border-radius: 1px;
+    border-style: none;
+    background-color: #ffffff1e;
+}

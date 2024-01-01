@@ -1,0 +1,281 @@
+{
+    "questions": [
+        {
+            "name": "easy",
+            "answers": [
+                {
+                    "name": "ans",
+                    "type": "NUMBER",
+                    "isInt": true
+                }
+            ]
+        },
+        {
+            "name": "unixtime",
+            "answers": [
+                {
+                    "name": "ans",
+                    "type": "NUMBER",
+                    "isInt": true
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "answers": [
+                {
+                    "name": "ans",
+                    "type": "NUMBER",
+                    "isInt": true
+                }
+            ]
+        },
+        {
+            "name": "empirical",
+            "answers": [
+                {
+                    "name": "ans",
+                    "type": "NUMBER"
+                }
+            ]
+        },
+        {
+            "name": "leapyear",
+            "answers": [
+                {
+                    "name": "ans",
+                    "type": "NUMBER"
+                }
+            ]
+        },
+        {
+            "name": "passant",
+            "answers": [
+                {
+                    "name": "ans",
+                    "type": "NUMBER",
+                    "isInt": true
+                }
+            ]
+        },
+        {
+            "name": "panda",
+            "answers": [
+                {
+                    "name": "ans",
+                    "type": "NUMBER",
+                    "isInt": true
+                }
+            ]
+        },
+        {
+            "name": "recursion",
+            "answers": [
+                {
+                    "name": "ans",
+                    "type": "FUNCTION",
+                    "inputs": ["n", "k", "a", "b" ],
+                    "tests": [
+                        { "n": 3, "k": 5, "a": 2, "b": 3 },
+                        { "n": 0, "k": 0, "a": 1, "b": 3 },
+                        { "n": 0, "k": 1, "a": 0, "b": 3 },
+                        { "n": 1, "k": 0, "a": 2, "b": 3 },
+                        { "n": 0, "k": 5, "a": 0, "b": 2 },
+                        { "n": 4, "k": 2, "a": -2, "b": 5 },
+                        { "n": 3, "k": 5, "a": 3.2, "b": 3.1 },
+                        { "n": 3, "k": 2, "a": 2.1, "b": -5.1 },
+                        { "n": 3, "k": 5, "a": 5, "b": 0 },
+                        { "n": 4, "k": 5, "a": -1, "b": 3 },
+                        { "n": 0, "k": 0, "a": 0, "b": 0 },
+                        { "n": 20, "k": 20, "a": 0, "b": 0 }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "hastring",
+            "answers": [
+                {
+                    "name": "ans",
+                    "type": "FUNCTION",
+                    "inputs": ["n"],
+                    "isInt": true,
+                    "tests": [
+                        { "n": 0 },
+                        { "n": 1 },
+                        { "n": 2 },
+                        { "n": 3 },
+                        { "n": 5 },
+                        { "n": 10 },
+                        { "n": 20 },
+                        { "n": 25 },
+                        { "n": 30 },
+                        { "n": 40 }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "hagoteem",
+            "answers": [
+                {
+                    "name": "ans",
+                    "type": "FUNCTION",
+                    "inputs": ["n"],
+                    "isInt": true,
+                    "tests": [
+                        { "n": 0 },
+                        { "n": 1 },
+                        { "n": 2 },
+                        { "n": 3 },
+                        { "n": 5 },
+                        { "n": 10 },
+                        { "n": 20 },
+                        { "n": 25 },
+                        { "n": 30 },
+                        { "n": 40 }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "analytic",
+            "answers": [
+                {
+                    "name": "function",
+                    "type": "FUNCTION",
+                    "inputs": [ "x", "C" ], 
+                    "tests": [
+                        {"x": "-10", "C": "0"},
+                        {"x": "-9", "C": "1"},
+                        {"x": "-8", "C": "-1"},
+                        {"x": "-7", "C": "3"},
+                        {"x": "-2", "C": "10"},
+                        {"x": "-1", "C": "-100"},
+                        {"x": "0", "C": "69"},
+                        {"x": "1", "C": "42"},
+                        {"x": "1.5", "C": "2.5"},
+                        {"x": "2", "C": "-0.5"},
+                        {"x": "4", "C": "-2.5"},
+                        {"x": "10", "C": "-50"}
+                    ]
+                },
+                {
+                    "name": "howmany",
+                    "type": "NUMBER"
+                }
+            ]
+        },
+        {
+            "name": "derivative",
+            "answers": [
+                {
+                    "name": "ans",
+                    "type": "FUNCTION",
+                    "inputs": [ "n", "F" ],
+                    "tests": [
+                        {"n": 2, "F": "-10"},
+                        {"n": 2, "F": "-9"},
+                        {"n": 2, "F": "-8"},
+                        {"n": 2, "F": "-7"},
+                        {"n": 2, "F": "-2"},
+                        {"n": 2, "F": "-1"},
+                        {"n": 2, "F": "0"},
+                        {"n": 2, "F": "1"},
+                        {"n": 2, "F": "1.5"},
+                        {"n": 2, "F": "2"},
+                        {"n": 2, "F": "4"},
+                        {"n": 2, "F": "10"},
+                        {"n": 7, "F": "-10"},
+                        {"n": 7, "F": "-9"},
+                        {"n": 7, "F": "-8"},
+                        {"n": 7, "F": "-7"},
+                        {"n": 7, "F": "-2"},
+                        {"n": 7, "F": "-1"},
+                        {"n": 7, "F": "0"},
+                        {"n": 7, "F": "1"},
+                        {"n": 7, "F": "1.5"},
+                        {"n": 7, "F": "2"},
+                        {"n": 7, "F": "4"},
+                        {"n": 7, "F": "10"},
+                        {"n": 0, "F": "-10"},
+                        {"n": 0, "F": "-9"},
+                        {"n": 0, "F": "-8"},
+                        {"n": 0, "F": "-7"},
+                        {"n": 0, "F": "-2"},
+                        {"n": 0, "F": "-1"},
+                        {"n": 0, "F": "0"},
+                        {"n": 0, "F": "1"},
+                        {"n": 0, "F": "1.5"},
+                        {"n": 0, "F": "2"},
+                        {"n": 0, "F": "4"},
+                        {"n": 0, "F": "10"}
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "checkers",
+            "answers": [
+                {
+                    "name": "ans",
+                    "type": "NUMBER",
+                    "isInt": true
+                }
+            ]
+        },
+        {
+            "name": "fibonacci",
+            "answers": [
+                {
+                    "name": "ans",
+                    "type": "NUMBER"
+                }
+            ]
+        },
+        {
+            "name": "dummy",
+            "answers": [
+                {
+                    "name": "ans",
+                    "type": "FUNCTION",
+                    "inputs": ["n"],
+                    "isInt": true,
+                    "tests": [
+                        { "n": 0 },
+                        { "n": 1 },
+                        { "n": 2 },
+                        { "n": 3 }
+                    ]
+                }
+            ]
+        }
+    ],
+    "checkpoints": [
+        { 
+            "name": "cp1", 
+            "depends": ["easy", "unixtime", "profile", "empirical"],
+            "twiceHash": "d6d1c058fe98c2686665456adffeea3a0f80b3c4fe3278f722fe1b96824f67df"
+        },
+        { 
+            "name": "cp2", 
+            "depends": ["leapyear", "passant", "panda"],
+            "twiceHash": "9b485e80757a6e3df3fb4a7d3846504e95530c5028a81a8c01b99ce176e606ac"
+        },
+        { 
+            "name": "cp3", 
+            "depends": ["recursion", "hastring", "hagoteem"],
+            "twiceHash": "788995d2814288ffd46791e7093ce5cfaea2ce0c632fa5adb35557cc4741dbcb"
+        },
+        { 
+            "name": "cp4", 
+            "depends": ["analytic", "derivative"],
+            "twiceHash": "aceffa0a5e27829c768fe59be5d138aeb12a788664d1efb3d58a55e30f89bc96"
+        },
+        { 
+            "name": "cp5", 
+            "depends": ["checkers", "fibonacci"],
+            "twiceHash": "a2564dc066dc4799779966a07c59dd7489c7789a48ceb6cad3681a480fa6d7e7"
+        }
+    ]
+}

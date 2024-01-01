@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/fonts.css">
+    <link rel="stylesheet" href="styles/global.css">
+    <link rel="stylesheet" href="styles/mathinput.css">
+    <link rel="stylesheet" href="styles/checkpoint.css">
+    <title>Tricky</title>
+
+    <link rel="stylesheet" href="lib/katex/katex.min.css"
+        integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" crossorigin="anonymous">
+    <script defer src="lib/katex/katex.min.js"
+        integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+        crossorigin="anonymous"></script>
+
+    <script defer src="lib/katex/contrib/auto-render.min.js"
+        integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+        crossorigin="anonymous"></script>
+    <script src="scripts/autotex.js"></script>
+    <script defer type="module" src="scripts/mathinput.js"></script>
+</head>
+
+<body>
+    <div id="math-input-template" class="math-input">
+        <textarea class="math-input-textarea monospaced" spellcheck="false"
+            placeholder="Type your answer here..."></textarea>
+        <div class="math-input-output-wrap">
+            <div class="math-input-tex-area"></div>
+            <div class="math-input-error-area monospaced" style="display: none;">
+                <span class="math-input-error-box"></span>
+                <br>
+                <span class="math-input-error-msg"></span>
+            </div>
+        </div>
+    </div>
+
+    <div id="main-wrap">
+        <div id="question-sidebar" class="vert-center">
+            <div id="question-sidebar-wrap" class="question-sidebar-invisible">
+                <button data-target-elem="welcome-page" class="sidebar-button">
+                    <span class="material-icons inline-big">
+                        waving_hand
+                    </span>
+                    <span><strong>Welcome</strong></span>
+                </button>
+                <button data-question-name="easy" class="question-sidebar-button sidebar-button">
+                    <span class="inline-circle"></span>
+                    <span class="question-name">Simple Trigonometry</span>
+                </button>
+                <button data-question-name="unixtime" class="question-sidebar-button sidebar-button">
+                    <span class="inline-circle"></span>
+                    <span class="question-name">Detroit: Become Creepy</span>
+                </button>
+                <button data-question-name="profile" class="question-sidebar-button sidebar-button">
+                    <span class="inline-circle"></span>
+                    <span class="question-name">Garlic Phone Animation</span>
+                </button>
+                <button data-question-name="empirical" class="question-sidebar-button sidebar-button">
+                    <span class="inline-circle"></span>
+                    <span class="question-name">Empirically Empirical</span>
+                </button>
+                <button data-checkpoint-name="cp1" class="checkpoint-sidebar-button sidebar-button">
+                    <span class="inline-big material-icons">flag</span>
+                    <span><strong>Checkpoint 1</strong></span>
+                </button>
+                <button data-question-name="leapyear" class="question-sidebar-button sidebar-button">
+                    <span class="inline-circle"></span>
+                    <span class="question-name">Leap of Faith</span>
+                </button>
+                <button data-question-name="passant" class="question-sidebar-button sidebar-button">
+                    <span class="inline-circle"></span>
+                    <span class="question-name">Google En Passant</span>
+                </button>
+                <button data-question-name="panda" class="question-sidebar-button sidebar-button">
+                    <span class="inline-circle"></span>
+                    <span class="question-name">ren pamdy</span>
+                </button>
+                <button data-checkpoint-name="cp2" class="checkpoint-sidebar-button sidebar-button">
+                    <span class="inline-big material-icons">flag</span>
+                    <span><strong>Checkpoint 2</strong></span>
+                </button>
+                <button data-question-name="recursion" class="question-sidebar-button sidebar-button">
+                    <span class="inline-circle"></span>
+                    <span class="question-name">HHHHHHHHHHHHHHH!</span>
+                </button>
+                <button data-question-name="hastring" class="question-sidebar-button sidebar-button">
+                    <span class="inline-circle"></span>
+                    <span class="question-name">HAHAHAHAHAHAHAH!</span>
+                </button>
+                <button data-question-name="hagoteem" class="question-sidebar-button sidebar-button">
+                    <span class="inline-circle"></span>
+                    <span class="question-name">BAHAHAHAHAHAHAH!</span>
+                </button>
+                <button data-checkpoint-name="cp3" class="checkpoint-sidebar-button sidebar-button">
+                    <span class="inline-big material-icons">flag</span>
+                    <span><strong>Checkpoint 3</strong></span>
+                </button>
+                <button data-question-name="analytic" class="question-sidebar-button sidebar-button">
+                    <span class="inline-circle"></span>
+                    <span class="question-name">isomorphism?????</span>
+                </button>
+                <button data-question-name="derivative" class="question-sidebar-button sidebar-button">
+                    <span class="inline-circle"></span>
+                    <span class="question-name">&quot;cannot do&quot; - a prof</span>
+                </button>
+                <button data-checkpoint-name="cp4" class="checkpoint-sidebar-button sidebar-button">
+                    <span class="inline-big material-icons">flag</span>
+                    <span><strong>Checkpoint 4</strong></span>
+                </button>
+                <button data-question-name="checkers" class="question-sidebar-button sidebar-button">
+                    <span class="inline-circle"></span>
+                    <span class="question-name">Now the fun begins</span>
+                </button>
+                <button data-question-name="fibonacci" class="question-sidebar-button sidebar-button">
+                    <span class="inline-circle"></span>
+                    <span class="question-name">Fibonacci (Nice)</span>
+                </button>
+                <button data-checkpoint-name="cp5" class="checkpoint-sidebar-button sidebar-button">
+                    <span class="inline-big material-icons">flag</span>
+                    <span><strong>Checkpoint 5</strong></span>
+                </button>
+                <button data-question-name="dummy" class="question-sidebar-button sidebar-button">
+                    <span class="inline-circle"></span>
+                    <span class="question-name">Dummy Question</span>
+                </button>
+            </div>
+        </div>
+
+        <div id="checkpoint-area-template" class="main-page checkpoint-page">
+            <h1>Checkpoint</h1>
+            <p>This checkpoint will check your answers to questions <span class="checkpoint-question-list"></span>.</p>
+            <button class="check-answers-button">Check Answers</button>
+            <div class="checkpoint-output-box">
+                <div class="checkpoint-success" style="display: none;">
+                    All checked answers are correct. Checkpoint code:
+                    <br>
+                    <div class="checkpoint-code-output">
+
+                    </div>
+                </div>
+                <div class="checkpoint-fail" style="display: none;">
+                    Sorry, at least one of your answers are incorrect.
+                </div>
+                <div class="checkpoint-error" style="display: none;">
+                    There was a problem evaluating your answer to question <span class="inline-circle checkpoint-error-question"></span>.
+                    <hr>
+                    <div class="checkpoint-error-output monospaced">
+                        <span class="checkpoint-error-box"></span>
+                        <br>
+                        <span class="checkpoint-error-msg"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="question-area" class="vert-center">
+            <div id="welcome-page" class="main-page">
+                <h1>Welcome</h1>
+            </div>
+            <div data-question-name="easy" class="main-page question-page">
+                <h1>
+                    Simple Trigonometry
+                </h1>
+                <p>
+                    What is $180 - 42 - 42$?
+                </p>
+                <div class="math-input" data-answer-name="ans"></div>
+            </div>
+            <div data-question-name="unixtime" class="main-page question-page">
+                <h1>Detroit: Become Creepy</h1>
+                <p>
+                    At what Unix time (in seconds) did CAG2 change his MC username to CAG2? (Hint: NameMC shows it in
+                    your local timezone.)
+                </p>
+                <div class="math-input" data-answer-name="ans"></div>
+            </div>
+            <div data-question-name="profile" class="main-page question-page">
+                <h1>Garlic Phone Animation</h1>
+                <p>
+                    Suppose CAG2's profile picture spins clockwise at a rate of $2918572878278522^\circ$ per second.
+
+                    After $2817274$ seconds, how many degrees would his profile picture be rotated clockwise from its
+                    original position? Give your answer as a positive integer that is as small as possible.
+                </p>
+                <div class="math-input" data-answer-name="ans"></div>
+            </div>
+            <div data-question-name="empirical" class="main-page question-page">
+                <h1>Empirically Empirical</h1>
+                <p>
+                    Suppose the $\mu$-ness of $\mathcal{R}$, denoted $\sigma(\mathcal{R})$ is related to its $v$-ness
+                    $\mu_v$, $\upsilon$-ness $\rho_v$, $i$-ness $v_\upsilon$ and highness $\upsilon_v$, and $D$-ness
+                    $\mathbb{D}$. They are empirically linked by the equation:
+                    \[
+                    \sigma(\mathcal{R}) = \frac{\arctan(0.4412852^{\upsilon_v
+                    v_\upsilon^{1.002412}})}{\mathbb{D}\mu_{\upsilon} \rho_{v}}
+                    \]
+                    with the formulae $\mu_v = \frac{1}{\mu_\upsilon}$, $\rho_v = \frac{1}{\sqrt[0.441285]{\rho_v}}$. It
+                    is
+                    assumed that
+                    \[
+                    -\frac{\pi}{2} &lt \sigma(\mathcal{R})\mathbb{D}\mu_{\upsilon} \rho_{v} &lt \frac{\pi}{2} \] Given
+                    that
+                    the
+                    $\mu$-ness of $\mathcal{R}$ is $0.69$, $i$-ness is $0.4$, $D$-ness is $0.6$ and $v$-ness is $0.4$,
+                    what is the highness of $\mathcal{R}$? (Please note that $v$ and $\upsilon$ are different
+                    characters; one is slightly wider than the other. Therefore, it is advised to use a magnifying glass
+                    and ruler for this question.)
+                </p>
+                <p>
+                    (Hint: Any typo you think you see is probably intentional.)
+                </p>
+                <div class="math-input" data-answer-name="ans"></div>
+            </div>
+            <div data-question-name="leapyear" class="main-page question-page">
+                <h1>Leap of Faith</h1>
+                <p>
+                    What is the probability that a randomly, uniformly picked day is the 29th of February?
+                </p>
+                <p>
+                    (If you do not like the notion of uniformly selecting from an infinite sample space, consider the
+                    probability
+                    for bounded time intervals first, then take the limit.)
+                </p>
+                <div class="math-input" data-answer-name="ans"></div>
+            </div>
+            <div data-question-name="passant" class="main-page question-page">
+                <h1>Google En Passant</h1>
+                <p>
+                    In chess, a pawn can move ahead two squares on its first move. If it does so, and lands adjacent to
+                    an
+                    enemy pawn, it may be captured by that enemy pawn. This is known as <i>en passant</i>.</p>
+                <p>
+                    For this question, define two occurences of en passant to be <i>different</i> if any of the
+                    following
+                    are true:
+                <ul>
+                    <li>The pawn being captured is different. Two pawns are different if they originated from different
+                        files
+                        or are different colors.</li>
+                    <li>The capturing pawn is different.
+                    </li>
+                    <li>The pawn was captured from a different file. For example, suppose the black pawn on the $c$ file
+                        was captured en passant. Two different ways for this to happen is if the the white pawn was on
+                        the $b$ file or the $d$ file.
+                    </li>
+                </ul>
+                </p>
+                <p>
+                    Assume a standard $8 \times 8$ chess board and standard chess rules. Assume no pawn promotions
+                    occur. How many <i>different</i> ways are there for en passant to theoretically occur? (Don't forget
+                    to account for both players capturing.)
+                </p>
+
+                <div class="math-input" data-answer-name="ans"></div>
+            </div>
+            <div data-question-name="panda" class="main-page question-page">
+                <h1>ren pamdy</h1>
+                <p>
+                    Suppose there are $20$ red pandas in a zoo and there are $3$ zookeepers who have been assigned to
+                    take care of these red pandas.
+                </p>
+                <p>
+                    The zoo policy states each zookeeper has to take care of at least $3$ red pandas. How many ways are
+                    there to assign each red panda to a zookeeper so that this requirement is met?
+                </p>
+
+                <div class="math-input" data-answer-name="ans"></div>
+            </div>
+            <div data-question-name="recursion" class="main-page question-page">
+                <h1>HHHHHHHHHHHHHHH!</h1>
+                <p>
+                    For $a, b \in \mathbb R$, consider the function $H$ defined on the non-negative integers $n, k \geq
+                    0$:
+                    \[
+                    H(n,k) = \begin{cases}
+                    1 & n = 0, k = 0\\
+                    1 + aH(k-1, 0) + bH(0, k-1) & n = 0\\
+                    1 + aH(n-1, 0) + bH(0, n-1) & k = 0\\
+                    1 + aH(n-1, k) + bH(n, k-1) & \text{otherwise}.
+                    \end{cases}
+                    \]
+                    Find a closed form expression for $H(n, k)$ in terms of $n, k, a, b$. You may assume $a + b \neq 1$.
+                </p>
+                <div class="math-input" data-answer-name="ans"></div>
+            </div>
+            <div data-question-name="hastring" class="main-page question-page">
+                <h1>HAHAHAHAHAHAHAH!</h1>
+                <p>
+                    A $HA$-string is a string of uppercase characters that can be permuted into a sequence of zero or
+                    more $HA$, optionally followed by an $H$. For example, $AHAHAHAH$, $AAAHHHH$ and $H$ are all
+                    $HA$-strings, as they can be permuted into $HAHAHAHA$, $HAHAHAH$ and $H$ respectively. However,
+                    $HAHAAHAA$ is not a $HA$-string. The empty string is a $HA$-string.
+                </p>
+                <p>
+                    How many $HA$-strings of length $n \geq 0$ are there?
+                </p>
+                <div class="math-input" data-answer-name="ans"></div>
+            </div>
+            <div data-question-name="hagoteem" class="main-page question-page">
+                <h1>BAHAHAHAHAHAHAH!</h1>
+                <p>
+                    A $HA$-$GOTEEM$-string is a string of uppercase characters such that its Levenshtein distance from
+                    some $HA$-string is $1$. In other words, you can delete, insert, or modify exactly one character
+                    from any $HA$-$GOTEEM$-string such that the resulting string is a $HA$-string.
+                </p>
+                <p>
+                    For example: $GAH$, $HA$ and $AAAGHHH$ are all $HA$-$GOTEEM$ strings.
+                </p>
+                <p>
+                    How many $HA$-$GOTEEM$-strings of length $n \geq 0$ are there?
+                </p>
+                <p>
+                    You may assume that $\binom{a}{b} = 0$ for $a, b \in \mathbb Z$ if $a &lt; b$ or $b &lt; 0$.
+                </p>
+                <div class="math-input" data-answer-name="ans"></div>
+            </div>
+            <div data-question-name="analytic" class="main-page question-page">
+                <h1>isomorphism?????</h1>
+                <p>
+                    Suppose an (analytic) function $f(x)$ on $\mathbb{R}$ is characterised by
+                    \[
+                    f(f(x)) - f(x) - x = C
+                    \]
+                    Find the $f(x)$ satisfying this constraint that has the largest $f'(0)$.
+                </p>
+                <div class="math-input" data-answer-name="function"></div>
+                <p>
+                    Also, how many such functions are there?
+                </p>
+                <div class="math-input" data-answer-name="howmany"></div>
+            </div>
+            <div data-question-name="derivative" class="main-page question-page">
+                <h1>“cannot do” - a prof</h1>
+                <p>
+                    Let $f : \mathbb{R} \to \mathbb{R}$ be differentiable at $x_0$. Let:
+                    \[
+                    \begin{align*}
+                    f_0(x, h) &= h\\
+                    f_n(x, h) &= f(x + f_{n-1}(x, h)) - f(x)
+                    \end{align*}
+                    \]
+                </p>
+                <p>
+                    Define the <i>$n$-th level derivative</i> of $f$ to be:
+                    \[
+                    \frac{d_n}{dx}f(x) = \lim_{h \to 0} \frac{f_n(x, h)}{h}
+                    \]
+                    Express $\frac{d_n}{dx}f(x_0)$ in terms of $f'(x_0)$ for $n \geq 0$. You may use $F$ to denote
+                    $f'(x_0)$.
+                </p>
+                <p>
+                    (You may be tempted to use L'hopital's rule. However, it requires that $f$ is differentiable on an
+                    open interval containing $x_0$, except possibly at $x_0$ itself, which is not a given condition.)
+                </p>
+
+                <div class="math-input" data-answer-name="ans"></div>
+            </div>
+            <div data-question-name="checkers" class="main-page question-page">
+                <h1>Now the fun begins</h1>
+                <p>
+                    Suppose you want to arrange red and green checkers on an $8 \times 8$ red and green checkboard in a
+                    certain way.
+                </p>
+                <p>
+                    You can place red checkers on green tiles and green checkers on red tiles, but no green checker may
+                    be adjacent to a red checker.
+                </p>
+                <p>
+                    How many valid ways are there to arrange the red and green checkers? Note that an empty board also
+                    counts as a valid arrangement.
+                </p>
+                <p>
+                    (Hint: There is no general formula.)
+                </p>
+                <div class="math-input" data-answer-name="ans"></div>
+            </div>
+            <div data-question-name="fibonacci" class="main-page question-page">
+                <h1>Fibonacci (Nice)</h1>
+                <p>
+                    Recall the Fibonacci numbers $F_n := 1, 1, 2, 3, 5, 8, 13, \cdots$.
+                </p>
+                <p>
+                    Suppose two Fibonacci numbers $x_1, x_2$ are independently drawn at random with uniform probability.
+                    What is the probability that $x_1 + x_2$ shares a factor with $69$ other than $1$?
+                </p>
+                <p>
+                    If you do not like the notion of drawing a random integer that could be arbitrarily large, find or
+                    bound the probability with the restriction $x_1, x_2 &lt; N$ for any $N$ and take $N \to \infty$.
+                </p>
+                <div class="math-input" data-answer-name="ans"></div>
+            </div>
+            <div data-question-name="dummy" class="main-page question-page">
+                <div class="math-input" data-answer-name="ans"></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="lib/sha256.js"></script>
+<script type="module" src="scripts/questiondata.js"></script>
+<script type="module" src="scripts/ui.js"></script>
+<script type="module" src="scripts/main.js"></script>
+
+</html>
