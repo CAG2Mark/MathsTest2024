@@ -12,6 +12,8 @@ export function animateMenuIn() {
 
     let cur = ++lock;
 
+    opened = true;
+
     background.classList.remove("hidden");
     leaveArea.classList.remove("hidden");
     setTimeout(() => {
@@ -31,6 +33,8 @@ export function animateMenuOut() {
 
     sidebar.classList.remove("question-sidebar-visible");
     background.classList.remove("menu-background-visible");
+
+    opened = false;
     
     leaveArea.classList.add("hidden");
     
@@ -58,14 +62,15 @@ function handleTouchStart(e) {
 function handleTouchMove(e) {
     if (!opened) return;
 
-    let newPos = e.targetTouches[0].pageX - startX;
-    if (newPos > 0) {
-        newPos = 20 * (Math.log(newPos / 20));
-    }
-    sidebar.style.transform = "translateX(" + newPos + "px)";
-
     prevX = curX;
     curX = e.targetTouches[0].pageX;
+
+    let newPos = curX - startX;
+    if (newPos > 0) {
+        // newPos = 0;
+        newPos = 20 * (Math.log((newPos) / 20 + 1));
+    }
+    sidebar.style.transform = "translateX(" + newPos + "px)";
 }
 
 function handleTouchEnd(e) {
@@ -79,6 +84,9 @@ function handleTouchEnd(e) {
     let width = sidebar.getBoundingClientRect().width;
 
     console.log(width);
+
+    if (delta < -5) return;
+
     if (delta > 10 || (curX - startX + width) < 0.75 * width) {
         animateMenuOut();
     }
