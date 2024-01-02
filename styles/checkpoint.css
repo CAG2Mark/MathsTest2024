@@ -48,6 +48,8 @@
     user-select: none;
     
     text-align: center;
+
+    -webkit-tap-highlight-color: transparent;
 }
 
 .check-answers-button:hover {
