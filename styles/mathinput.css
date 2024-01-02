@@ -54,7 +54,7 @@
     border-radius: 0 0 var(--textarea-radius) var(--textarea-radius);
 
     height: 80px;
-    overflow: scroll;
+    overflow: auto;
 
     position: relative;
 

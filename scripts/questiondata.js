@@ -100,7 +100,7 @@ export class Checkpoint {
 
             let ansFields = Object.entries(q.answerFields);
             console.log(ansFields);
-            ansFields.sort(([a, b]) => a[0].localeCompare(b[0]));
+            ansFields.sort((a, b) => a[0].localeCompare(b[0]));
 
             for (let j = 0; j < ansFields.length; ++j) {
                 let ansField = ansFields[j][1];
@@ -125,7 +125,7 @@ export class Checkpoint {
 
         let hash = sha256(ansString);
         let twiceHash = sha256(hash);
-
+        
         console.log(twiceHash);
 
         if (twiceHash == this.twiceHash) {
