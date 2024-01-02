@@ -4,8 +4,11 @@ let leaveArea = document.getElementById("mobile-leave");
 
 let inited = false;
 let opened = false;
+let firstMove = false;
 
 let lock = 0;
+
+let closing = false;
 
 export function animateMenuIn() {
     if (!inited) return;
@@ -19,11 +22,11 @@ export function animateMenuIn() {
     setTimeout(() => {
         sidebar.classList.add("question-sidebar-visible");
         background.classList.add("menu-background-visible"); 
-        lock = false;
     }, 5);
 
     setTimeout(() => {
         if (cur != lock) return;
+        lock = 0;
     }, 300);
     
 }
@@ -35,6 +38,7 @@ export function animateMenuOut() {
     background.classList.remove("menu-background-visible");
 
     opened = false;
+    closing = true;
     
     leaveArea.classList.add("hidden");
     
@@ -43,53 +47,84 @@ export function animateMenuOut() {
         if (cur != lock) return;
 
         background.classList.add("hidden"); 
+        closing = false;
     }, 300);
 }
 
 let hamburgerButton = document.getElementById("hamburger-button");
 
 let startX = 0;
+let curTime = 0;
 let prevX = 10000;
+let prevTime = 0;
 let curX = 0;
+let swiping = false;
 
 function handleTouchStart(e) {
-    if (!opened) return;
+    if (!opened || closing) return;
+
+    swiping = true;
 
     sidebar.classList.add("sidebar-touching");
+    background.classList.add("sidebar-touching");
     startX = e.targetTouches[0].pageX;
+    curX = startX;
+    curTime = window.performance.now();
+
+    firstMove = true;
 }
 
 function handleTouchMove(e) {
-    if (!opened) return;
+    if (!opened || !swiping) return;
+
+    let width = sidebar.getBoundingClientRect().width;
 
     prevX = curX;
     curX = e.targetTouches[0].pageX;
 
+    prevTime = curTime;
+    curTime = window.performance.now();
+
     let newPos = curX - startX;
+    let opacity = Math.max(0, Math.min(1, (newPos + width) / width));
+
+    opacity = Math.sqrt(opacity);
+
     if (newPos > 0) {
         // newPos = 0;
-        newPos = 20 * (Math.log((newPos) / 20 + 1));
+        newPos = 12 * (Math.log((newPos) / 12 + 1));
     }
+    
+    
     sidebar.style.transform = "translateX(" + newPos + "px)";
+    background.style.opacity = opacity.toString();
 }
 
 function handleTouchEnd(e) {
-    if (!opened) return;
+    if (!opened || !swiping) return;
 
-    sidebar.classList.remove("sidebar-touching");
-    sidebar.style.transform = null;
+    revertSwipes();
 
-    let delta = prevX - curX;
+    let velocity = (prevX - curX) / (curTime - prevTime);
 
     let width = sidebar.getBoundingClientRect().width;
 
-    console.log(width);
+    console.log(velocity);
 
-    if (delta < -5) return;
+    if (velocity < 0) return;
 
-    if (delta > 10 || (curX - startX + width) < 0.75 * width) {
+    if (velocity > 0.3 || (curX - startX + width) < 0.75 * width) {
         animateMenuOut();
     }
+}
+
+function revertSwipes() {
+    swiping = false;
+
+    sidebar.classList.remove("sidebar-touching");
+    background.classList.remove("sidebar-touching");
+    sidebar.style.transform = null;
+    background.style.opacity = null;
 }
 
 export function initMobile() {
@@ -106,9 +141,7 @@ export function initMobile() {
 
     inited = true;
 
-    document.addEventListener("touchstart", handleTouchStart);
-
-    document.addEventListener("touchmove", handleTouchMove);
-
-    document.addEventListener("touchend", handleTouchEnd);
+    leaveArea.addEventListener("touchstart", handleTouchStart);
+    leaveArea.addEventListener("touchmove", handleTouchMove);
+    leaveArea.addEventListener("touchend", handleTouchEnd);
 }
