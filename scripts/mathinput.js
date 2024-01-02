@@ -62,8 +62,8 @@ function sanitize(text) {
         .replace("\'", "&#039;")
         .replace("<", "&lt;")
         .replace(">", "&gt;")
-        .replace("/", "&#47")
-        .replace("\\", "&#92");
+        .replace("/", "&#47;")
+        .replace("\\", "&#92;");
 }
 
 export class MathInputBox {

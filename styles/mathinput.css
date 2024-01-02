@@ -100,7 +100,6 @@
 .math-input-tex-area {
     overflow-y: auto;
     display: flex;
-    justify-content: center;
     align-items: center;
     flex-wrap: wrap;
 
