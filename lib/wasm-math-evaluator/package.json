@@ -1,0 +1,17 @@
+{
+  "name": "wasm-math-evaluator",
+  "collaborators": [
+    "CAG2Mark <markng989@gmail.com>"
+  ],
+  "version": "0.1.0",
+  "files": [
+    "wasm_math_evaluator_bg.wasm",
+    "wasm_math_evaluator.js",
+    "wasm_math_evaluator.d.ts"
+  ],
+  "module": "wasm_math_evaluator.js",
+  "types": "wasm_math_evaluator.d.ts",
+  "sideEffects": [
+    "./snippets/*"
+  ]
+}
