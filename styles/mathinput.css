@@ -23,6 +23,8 @@
 
     margin-top: 0;
     box-sizing: border-box;
+
+    touch-action: manipulation;
 }
 
 .math-input {

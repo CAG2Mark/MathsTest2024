@@ -45,6 +45,8 @@
         align-items: center;
         flex: auto; 
         white-space: nowrap;
+
+        touch-action: manipulation;
     }
 
     .question-sidebar-button {

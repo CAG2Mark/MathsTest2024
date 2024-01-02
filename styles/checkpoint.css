@@ -50,6 +50,8 @@
     text-align: center;
 
     -webkit-tap-highlight-color: transparent;
+
+    touch-action: manipulation;
 }
 
 .check-answers-button:hover {
