@@ -4,6 +4,8 @@ let curPageName;
 
 import { checkpointPages, questionPages, questionIdx, questionButtons, checkpointButtons, checkpointData } from "./questiondata.js"
 
+import { animateMenuOut, initMobile } from "./mobile.js";
+
 function transitionPage(name, page, button) {
     if (name == curPageName) return;
     curPageName = name;
@@ -17,6 +19,8 @@ function transitionPage(name, page, button) {
     if (curButton)
         curButton.classList.remove("sidebar-button-selected");
     curButton = button;
+
+    animateMenuOut();
 }
 
 function initButton(idx, button) {
@@ -65,7 +69,14 @@ function colorCheckpoints() {
     })
 }
 
+function showQuestions() {
+    document.getElementById("question-area").classList.remove("hidden");
+    document.getElementById("loading-screen").classList.add("hidden");
+}
+
 export function initUI() {
     setupSidebar();
+    showQuestions();
     colorCheckpoints();
+    initMobile();
 }

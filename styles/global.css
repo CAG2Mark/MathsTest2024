@@ -3,6 +3,16 @@
     --global-font: "Inter", Helvetica, Arial, sans-serif;
 }
 
+#loading-screen {
+    height: 100%;
+    width: 100%;
+    color: #686868;
+}
+
+.hidden {
+    display: none !important;
+}
+
 html, body {
     margin: 0;
     overflow: hidden;
@@ -149,7 +159,7 @@ body {
 
 .vert-center {
     overflow-y: auto;
-    display: flex !important;
+    display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;

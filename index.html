@@ -42,8 +42,9 @@
         <button id="hamburger-button">=</button>
     </div>
 
-    <div id="menu-background" class="mobile-only"></div>
+    <div id="menu-background" class="mobile-only hidden"></div>
     <div id="main-wrap">
+        <div id="mobile-leave" class="mobile-only hidden"></div>
         <div id="question-sidebar" class="vert-center">
             <div id="question-sidebar-wrap" class="question-sidebar-invisible">
                 <button data-target-elem="welcome-page" class="sidebar-button">
@@ -178,7 +179,13 @@
             </div>
         </div>
 
-        <div id="question-area" class="vert-center">
+        <div id="loading-screen" class="vert-center hidden">
+            <div>
+                Loading math libraries and questions... please wait...
+            </div>
+        </div>
+
+        <div id="question-area" class="vert-center hidden">
             <div id="welcome-page" class="main-page">
                 <h1>Welcome</h1>
             </div>
@@ -462,9 +469,9 @@
 
 <script src="lib/sha256.js"></script>
 <script type="module" src="scripts/questiondata.js"></script>
+<script type="module" src="scripts/mobile.js"></script>
 <script type="module" src="scripts/ui.js"></script>
 <script type="module" src="scripts/tutorial.js"></script>
-<script type="module" src="scripts/mobile.js"></script>
 <script type="module" src="scripts/main.js"></script>
 
 </html>

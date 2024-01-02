@@ -1,24 +1,60 @@
 let sidebar = document.getElementById("question-sidebar");
 let background = document.getElementById("menu-background");
+let leaveArea = document.getElementById("mobile-leave");
 
-function animateMenuIn() {
-    sidebar.classList.add("question-sidebar-visible");
-    background.classList.add("menu-background-visible");  
+let inited = false;
+
+let lock = 0;
+
+export function animateMenuIn() {
+    if (!inited) return;
+
+    let cur = ++lock;
+
+    background.classList.remove("hidden");
+    leaveArea.classList.remove("hidden");
+    setTimeout(() => {
+        sidebar.classList.add("question-sidebar-visible");
+        background.classList.add("menu-background-visible"); 
+        lock = false;
+    }, 5);
+
+    setTimeout(() => {
+        if (cur != lock) return;
+    }, 300);
+    
 }
 
-function animateMenuOut() {
+export function animateMenuOut() {
+    if (!inited) return;
+
     sidebar.classList.remove("question-sidebar-visible");
-    background.classList.remove("menu-background-visible");  
+    background.classList.remove("menu-background-visible");
+    
+    leaveArea.classList.add("hidden");
+    
+    let cur = ++lock;
+    setTimeout(() => {
+        if (cur != lock) return;
+
+        background.classList.add("hidden"); 
+    }, 300);
 }
 
 let hamburgerButton = document.getElementById("hamburger-button");
 
-let opened = false;
-hamburgerButton.addEventListener("click", (e) => {
-    opened = !opened;
-    if (opened) {
-        animateMenuIn();
-    } else {
-        animateMenuOut();
-    }
-})
+export function initMobile() {
+    let opened = false;
+    hamburgerButton.addEventListener("click", (e) => {
+        opened = !opened;
+        if (opened) {
+            animateMenuIn();
+        } else {
+            animateMenuOut();
+        }
+    })
+
+    leaveArea.addEventListener("click", (_e) => animateMenuOut());
+
+    inited = true;
+}
