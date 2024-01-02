@@ -237,3 +237,26 @@ hr {
     border-style: none;
     background-color: #ffffff1e;
 }
+
+/* Custom Scrollbar */
+/* width */
+::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+}
+ 
+/* Track */
+::-webkit-scrollbar-track {
+    background: #1a1a1a;
+}
+  
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: rgb(77, 77, 77);
+    border-radius: 2px;
+}
+  
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #5c5c5c;
+}
