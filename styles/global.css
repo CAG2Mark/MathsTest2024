@@ -78,6 +78,8 @@ body {
     display: grid;
     grid-template-columns: 32px 1fr;
     align-items: center;
+
+    touch-action: manipulation;
 }
 
 .checkpoint-sidebar-button {
