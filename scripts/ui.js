@@ -36,6 +36,10 @@ function initButton(idx, button) {
         let targetName = button.dataset.targetElem;
         let target = document.getElementById(targetName);
         button.addEventListener("click", (e) => transitionPage("OTHER" + targetName, target, button));
+
+        if (targetName == "welcome-page") {
+            transitionPage("OTHER" + targetName, target, button);
+        }
     }
 }
 

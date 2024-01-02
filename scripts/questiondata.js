@@ -1,4 +1,5 @@
 import { AnswerType, formatError } from "./mathinput.js";
+import { check_expr } from "../lib/wasm-math-evaluator/wasm_math_evaluator.js";
 
 export class Checkpoint {
     constructor(name, dependsOn, twiceHash) {
@@ -40,10 +41,29 @@ export class Checkpoint {
         this.successPage.style.display = "block";
         this.failPage.style.display = "none";
 
+        this.successPageOutput.innerHTML = code;
+
         this.doSuccessActions();
     }
 
-    displayFail(code) {
+    displayFail(undefQues, undefInputs) {
+        if (undefQues) {
+            this.errorFailMoreInfo.style.display = "inline";
+            this.errorFailMoreInfoPill.innerHTML = questionIdx[undefQues] + 1;
+            
+            let undefText = "";
+            let entries = Object.entries(undefInputs);
+            entries.forEach(([name, val], idx) => {
+                undefText += name + " = " + check_expr(val, []).latex;
+                if (idx != entries.length - 1) 
+                    undefText += ", \\ "
+            })
+
+            katex.render(undefText, this.errorFailMoreInfoInputs, { displayMode: true })
+        } else {
+            this.errorFailMoreInfo.style.display = "none";
+        }
+
         this.errorPage.style.display = "none";
         this.successPage.style.display = "none";
         this.failPage.style.display = "block";
@@ -69,6 +89,9 @@ export class Checkpoint {
         let depends = this.dependsOn;
         let ansString = "";
 
+        let undefQues;
+        let undefInput;
+
         for (let i = 0; i < depends.length; ++i) {
             let qName = depends[i];
             let q = questionData[qName];
@@ -84,6 +107,11 @@ export class Checkpoint {
                 let inpBox = ansField.inputBox;
                 
                 let res = inpBox.eval();
+                // Check if any inputs are NaN or inf
+                if (!undefQues && res[2]) {
+                    undefQues = qName;
+                    undefInput = res[2];
+                }
 
                 if (!res[1]) {
                     this.displayError(res[0].error, res[0].error.input, qName);
@@ -98,10 +126,12 @@ export class Checkpoint {
         let hash = sha256(ansString);
         let twiceHash = sha256(hash);
 
+        console.log(twiceHash);
+
         if (twiceHash == this.twiceHash) {
             this.displaySuccess(hash);
         } else {
-            this.displayFail();
+            this.displayFail(undefQues, undefInput);
         }
     }
 
@@ -113,9 +143,16 @@ export class Checkpoint {
         this.successPage = page.getElementsByClassName("checkpoint-success")[0];
         this.failPage = page.getElementsByClassName("checkpoint-fail")[0];
 
+        this.successPageOutput = page.getElementsByClassName("checkpoint-code-output")[0];
+
         this.errorPagePill = page.getElementsByClassName("checkpoint-error-question")[0];
         this.errorBox = page.getElementsByClassName("checkpoint-error-box")[0];
         this.errorMsgBox = page.getElementsByClassName("checkpoint-error-msg")[0];
+
+        this.errorFailMoreInfo = page.getElementsByClassName("checkpoint-fail-more-info")[0];
+        this.errorFailMoreInfoPill = page.getElementsByClassName("checkpoint-fail-question")[0];
+        this.errorFailMoreInfoInputs = page.getElementsByClassName("checkpoint-fail-inputs")[0];
+        
 
         this.checkButton.addEventListener("click", (e) => this.check());
     }

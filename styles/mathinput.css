@@ -61,9 +61,9 @@
     box-sizing: border-box;
 }
 
-.monospaced {
-    font-size: calc(var(--font-size) - 1px);
-    font-family: 'JetBrainsMono', Consolas, Menlo, 'Courier New', Courier, monospace;
+.monospaced, .mono {
+    font-size: var(--font-size) !important;
+    font-family: 'JetBrainsMono', Consolas, Menlo, 'Courier New', Courier, monospace !important;
 }
 
 .math-input-error-area {

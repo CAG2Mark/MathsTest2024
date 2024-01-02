@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="styles/global.css">
     <link rel="stylesheet" href="styles/mathinput.css">
     <link rel="stylesheet" href="styles/checkpoint.css">
+    <link rel="stylesheet" href="styles/mobile.css">
     <title>Tricky</title>
 
     <link rel="stylesheet" href="lib/katex/katex.min.css"
@@ -37,6 +38,11 @@
         </div>
     </div>
 
+    <div id="hamburger-container" class="mobile-only">
+        <button id="hamburger-button">=</button>
+    </div>
+
+    <div id="menu-background" class="mobile-only"></div>
     <div id="main-wrap">
         <div id="question-sidebar" class="vert-center">
             <div id="question-sidebar-wrap" class="question-sidebar-invisible">
@@ -46,6 +52,13 @@
                     </span>
                     <span><strong>Welcome</strong></span>
                 </button>
+                <button data-target-elem="tutorial-page" class="sidebar-button">
+                    <span class="material-icons inline-big">
+                        import_contacts
+                    </span>
+                    <span><strong>Tutorial</strong></span>
+                </button>
+                <hr>
                 <button data-question-name="easy" class="question-sidebar-button sidebar-button">
                     <span class="inline-circle"></span>
                     <span class="question-name">Simple Trigonometry</span>
@@ -133,19 +146,28 @@
             <h1>Checkpoint</h1>
             <p>This checkpoint will check your answers to questions <span class="checkpoint-question-list"></span>.</p>
             <button class="check-answers-button">Check Answers</button>
-            <div class="checkpoint-output-box">
+            <div class="checkpoint-output-box vert-center">
                 <div class="checkpoint-success" style="display: none;">
                     All checked answers are correct. Checkpoint code:
                     <br>
-                    <div class="checkpoint-code-output">
+                    <div class="checkpoint-code-output monospaced">
 
                     </div>
                 </div>
                 <div class="checkpoint-fail" style="display: none;">
                     Sorry, at least one of your answers are incorrect.
+                    <span class="checkpoint-fail-more-info">
+                        Please also note that your answer to question <span
+                            class="inline-circle checkpoint-fail-question"></span>
+                        gave an undefined value for the input:
+                        <div class="checkpoint-fail-inputs"></div>
+                        Please make sure you are not dividing by zero, or putting too large parameters into factorials
+                        or exponentials.
+                    </span>
                 </div>
                 <div class="checkpoint-error" style="display: none;">
-                    There was a problem evaluating your answer to question <span class="inline-circle checkpoint-error-question"></span>.
+                    There was a problem evaluating your answer to question <span
+                        class="inline-circle checkpoint-error-question"></span>.
                     <hr>
                     <div class="checkpoint-error-output monospaced">
                         <span class="checkpoint-error-box"></span>
@@ -159,6 +181,45 @@
         <div id="question-area" class="vert-center">
             <div id="welcome-page" class="main-page">
                 <h1>Welcome</h1>
+            </div>
+            <div id="tutorial-page" class="main-page">
+                <h1>Tutorial</h1>
+                <p>
+                    When asked for an answer, you will need to input a mathematical expression.
+                    This could be a number or a function, depending on the question.
+                </p>
+                <p>
+                    For example, if the answer is $4$, you can input <span class="mono">4</span>,
+                    <span class="mono">2+2</span>, <span class="mono">1+3</span> or similar:
+                </p>
+                <div class="math-input" id="tut1"></div>
+                <p>
+                    As you may have noticed, the input box doubles as a calculator. You can use
+                    many standard mathematical functions in your input. All available functions are
+                    <span class="mono">sin, cos, tan, arcsin, arccos, arctan, sinh, cosh, tanh,
+                        arsinh, arcosh, artanh, exp, ln, sqrt, sgn, floor, ceil, abs, nCr, nPr</span>.
+                    The available operators are <span class="mono">+, -, *, /, %, ^, !</span>.
+                </p>
+                <p>
+                    For example, if the answer is $\sqrt{\left(\binom{10}{5} \mod 4\right) + (\sin 5)^2}$, you could
+                    type
+                    <span class="mono">sqrt(nCr(10, 5) % 4 + (sin5)^2</span>. Note that brackets
+                    can be left open.
+                </p>
+                <div class="math-input" id="tut2"></div>
+                <p>
+                    Sometimes, you will need to input a function or expression of some variables as the answer.
+                    For example, if you are asked to find $\sin(a + b)$, you could type 
+                    <span class="mono">sin a cos b + sin b cos a</span> or <span class="mono">sin(a+b)</span>.
+                </p>
+                <div class="math-input" id="tut3"></div>
+                <p>
+                    You can also define variables within your answer. For example, if you need to compute
+                    $\sin\frac{x^2+4}{|\sin x|} + \sqrt{\frac{x^2+4}{|\sin x|}} + (\frac{x^2+4}{|\sin x|} )!$, you can
+                    type <span class="mono">let r = sin((x^2+4)/abs sin x); sin r + sqrt r + r!</span> instead of
+                    typing out the whole thing.
+                </p>
+                <div class="math-input" id="tut4"></div>
             </div>
             <div data-question-name="easy" class="main-page question-page">
                 <h1>
@@ -402,6 +463,8 @@
 <script src="lib/sha256.js"></script>
 <script type="module" src="scripts/questiondata.js"></script>
 <script type="module" src="scripts/ui.js"></script>
+<script type="module" src="scripts/tutorial.js"></script>
+<script type="module" src="scripts/mobile.js"></script>
 <script type="module" src="scripts/main.js"></script>
 
 </html>

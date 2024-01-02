@@ -9,6 +9,8 @@ export const AnswerType = {
 }
 
 export function formatError(text, error) {
+    text += " ";
+
     let start = error.start;
     let end = error.start + error.len;
 
@@ -16,9 +18,9 @@ export function formatError(text, error) {
     let mid = text.substring(start, end);
     let snd = text.substring(end);
 
-    fst = "<span class=\"error-text\">" + fst + "</span>";
-    mid = "<span class=\"error-highight\">" + mid + "</span>";
-    snd = "<span class=\"error-text\">" + snd + "</span>";
+    fst = "<span class=\"error-text\">" + sanitize(fst) + "</span>";
+    mid = "<span class=\"error-highight\">" + sanitize(mid) + "</span>";
+    snd = "<span class=\"error-text\">" + sanitize(snd) + "</span>";
 
     return fst + mid + snd;
 }
@@ -60,6 +62,8 @@ function sanitize(text) {
         .replace("\'", "&#039;")
         .replace("<", "&lt;")
         .replace(">", "&gt;")
+        .replace("/", "&#47")
+        .replace("\\", "&#92");
 }
 
 export class MathInputBox {
@@ -76,12 +80,11 @@ export class MathInputBox {
 
     renderError(error) {
         let inp = this.textArea.value;
-        let text = sanitize(inp) + " ";
 
         this.texArea.style.display = "none";
         this.errorArea.style.display = null;
 
-        this.errorBox.innerHTML = formatError(text, error);
+        this.errorBox.innerHTML = formatError(inp, error);
         this.errorMsgArea.innerHTML = error.msg;
     }
 
@@ -115,11 +118,17 @@ export class MathInputBox {
 
             let answers = [];
 
+            let undefInp;
+
             for (let i = 0; i < tests.length; ++i) {
                 let vars = Object.entries(tests[i]);
                 vars.forEach((pair, _1, _2) => inputsAux.push(pair));
 
                 let res = eval_expr(inp, inputsAux);
+                // Check if any inputs are NaN or inf
+                if (!undefInp && (res.is_nan || res.is_inf)) {
+                    undefInp = tests[i];
+                }
 
                 if (res.result != 'EvalSuccess') {
                     return [res, false];
@@ -128,7 +137,7 @@ export class MathInputBox {
                 answers.push(this.wrapNum(res));
             }
 
-            return [answers, true];
+            return [answers, true, undefInp];
         } else {
             let res = eval_expr(inp, inputs);
             if (res.result != 'EvalSuccess') {
@@ -200,9 +209,9 @@ export class MathInputBox {
                 }
 
                 if (res.is_exact) {
-                    katex.render(wrapGather(latex, "=" + ans), this.texArea, { displayMode: true });
+                    katex.render(wrapGather(latex, " = " + ans), this.texArea, { displayMode: true });
                 } else {
-                    katex.render(wrapGather(latex, "\\approx" + ans), this.texArea, { displayMode: true });
+                    katex.render(wrapGather(latex, "\\approx " + ans), this.texArea, { displayMode: true });
                 }
             } else {
                 let error = res.error;

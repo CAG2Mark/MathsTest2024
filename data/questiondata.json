@@ -260,7 +260,7 @@
         { 
             "name": "cp2", 
             "depends": ["leapyear", "passant", "panda"],
-            "twiceHash": "9b485e80757a6e3df3fb4a7d3846504e95530c5028a81a8c01b99ce176e606ac"
+            "twiceHash": "a2a44bace53c9c662cffb4656aebd218a7eb833f6ffe2f3ab6005e6653dd9223"
         },
         { 
             "name": "cp3", 
@@ -275,7 +275,7 @@
         { 
             "name": "cp5", 
             "depends": ["checkers", "fibonacci"],
-            "twiceHash": "a2564dc066dc4799779966a07c59dd7489c7789a48ceb6cad3681a480fa6d7e7"
+            "twiceHash": "f78e09577d86ab4e78475ccd704d15dd0eda3ea639ae28e6fa3a85d5371b805d"
         }
     ]
 }

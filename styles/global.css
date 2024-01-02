@@ -16,6 +16,10 @@ html {
     color: white;
 }
 
+body {
+    position: relative;
+}
+
 .question-sidebar-button .inline-circle {
     transition: background-color 150ms ease;
 }
@@ -89,21 +93,21 @@ html {
 
 .sidebar-button:hover:not(.sidebar-button-selected) {
     border-color: #393939;
-    background-color: #161616;
+    background-color: #ffffff15;
 }
 
 .sidebar-button:active:not(.sidebar-button-selected) {
     border-color: #595959;
-    background-color: #393939;
+    background-color: #ffffff2b;
 }
 
 .sidebar-button-selected {
     border-color: transparent;
-    background-color: #292929;
+    background-color: #ffffff14;
 }
 
 .sidebar-button-selected:hover {
-    border-color: #393939;
+    border-color: #ffffff1f;
 }
 
 .sidebar-button-selected:active {
@@ -159,6 +163,11 @@ html {
     
     width: 100%;
     height: 100%;
+    scrollbar-width: none;
+}
+
+#question-sidebar::-webkit-scrollbar {
+    display: none;
 }
 
 #question-sidebar-wrap {
@@ -196,7 +205,7 @@ html {
     font-size: 1em !important;
 }
 
-.main-page > *:not(h1):not(.math-input-error-area *) {
+.main-page > *:not(h1):not(.math-input-error-area *):not(button) {
     font-family: 'KaTeX_Main', Georgia, 'Times New Roman', Times, serif;
     font-size: 1.21em;
 }
@@ -204,4 +213,11 @@ html {
 .main-page > .math-input {
     width: calc(100% + 4px);
     margin-left: -2px;
+}
+
+hr {
+    height: 2px;
+    border-radius: 1px;
+    border-style: none;
+    background-color: #ffffff1e;
 }
