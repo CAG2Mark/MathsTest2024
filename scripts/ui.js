@@ -57,7 +57,7 @@ function setupSidebar() {
         if (elems[i].id != "math-input-template")
             initButton(i, elems[i]);
 
-    document.getElementById("question-sidebar-wrap").classList.remove("question-sidebar-invisible");
+    document.getElementById("question-sidebar-wrap").classList.remove("invisible");
 }
 
 function colorCheckpoints() {
@@ -72,7 +72,7 @@ function colorCheckpoints() {
 }
 
 function showQuestions() {
-    document.getElementById("question-area").classList.remove("hidden");
+    document.getElementById("question-area").classList.remove("invisible");
     document.getElementById("loading-screen").classList.add("hidden");
 }
 

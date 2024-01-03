@@ -197,7 +197,7 @@ body {
     opacity: 1;
 }
 
-.question-sidebar-invisible {
+.invisible {
     opacity: 0 !important;
 }
 
@@ -205,6 +205,8 @@ body {
     grid-column: 2;
     grid-row: 1;
     height: 100%;
+
+    transition: opacity 200ms ease;
 }
 
 .main-page {
