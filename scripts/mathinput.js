@@ -93,10 +93,22 @@ export class MathInputBox {
             return "NaN";
         }
         if (res.is_inf) {
-            return [res.sign, "inf"]
+            return [res.sign, "inf"];
         }
 
         let mantissaStr = res.mantissa;
+
+        let allZeros = true;
+        for (let i = 0; i < mantissaStr.length; ++i) {
+            if (mantissaStr[i] == '0') continue;
+            allZeros = false;
+            break;
+        }
+
+        if (allZeros) {
+            return ["0"];
+        }
+
         if (this.ansField.isInt) {
             return [res.sign, roundToInt(mantissaStr, res.exp), res.exp];
         }

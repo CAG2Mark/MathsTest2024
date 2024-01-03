@@ -387,7 +387,7 @@
         { 
             "name": "cp3", 
             "depends": ["panda", "rotation"],
-            "twiceHash": "395daf785986d2cddfefc750970e3e7af60c91b622c1a208478abcccc9a063e0"
+            "twiceHash": "2a906095c00c2c27fcc8468fd05589d31b41ed9f9ba4ecdbf2b45be4c9d135fd"
         },
         { 
             "name": "cp4", 
@@ -397,7 +397,7 @@
         { 
             "name": "cp5", 
             "depends": ["analytic", "derivative"],
-            "twiceHash": "aceffa0a5e27829c768fe59be5d138aeb12a788664d1efb3d58a55e30f89bc96"
+            "twiceHash": "f84b58216d440948d746e643db77f287c225f69baea02f6ea43714ffb759757b"
         },
         { 
             "name": "cp6", 
