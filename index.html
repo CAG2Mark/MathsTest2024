@@ -143,14 +143,17 @@
                     <span class="inline-big material-icons">flag</span>
                     <span><strong>Checkpoint 6</strong></span>
                 </button>
-                <button data-question-name="dummy" class="question-sidebar-button sidebar-button">
-                    <span class="inline-circle"></span>
-                    <span class="question-name">Dummy Question</span>
+                <hr class="mo-mobile">
+                <button data-target-elem="info-page" class="sidebar-button">
+                    <span class="material-icons inline-big">
+                        info
+                    </span>
+                    <span><strong>Information &amp; Privacy</strong></span>
                 </button>
             </div>
         </div>
 
-        <div id="checkpoint-area-template" class="main-page checkpoint-page">
+        <div id="checkpoint-area-template" class="main-page checkpoint-page content-page">
             <h1>Checkpoint</h1>
             <p>This checkpoint will check your answers to questions <span class="checkpoint-question-list"></span>.</p>
             <button class="check-answers-button">Check Answers</button>
@@ -193,7 +196,7 @@
         </div>
 
         <div id="question-area" class="vert-center invisible" tabindex="-1">
-            <div id="welcome-page" class="main-page">
+            <div id="welcome-page" class="main-page content-page">
                 <h1>Welcome</h1>
                 <p>
                     Well, would you look at that? Your favourite maths test franchise has
@@ -205,7 +208,57 @@
                     have fun(TM)!
                 </p>
             </div>
-            <div id="tutorial-page" class="main-page">
+            <div id="info-page" class="main-page">
+                <h1>Privacy</h1>
+                <p>
+                    This website is purely client-side and does not store identifiable user data on any server. The
+                    developer has made no efforts to send any user-generated data to any server. This can be verified by
+                    viewing the source code of this project.
+                <p>
+                    However, this site is hosted on Cloudflare Pages, and hence is on Cloudflare's network. Thus, usage
+                    of this site may be subject to Cloudflare's privacy policy, available
+                    <a href="https://www.cloudflare.com/en-gb/privacypolicy/" target="_blank">here</a>. In
+                    this case, you would be categorised as an End User, and a Website Visitor should you access
+                    Cloudflare's website for the purpose of viewing the privacy policy.
+                </p>
+                <p>
+                    All required libraries and files are in this website's repository, and thus no requests 
+                    are made to any server other than those CloudFlare's CDN.
+                </p>
+                <p>
+                    Your IGN, previous answers, and information about completed checkpoints are saved between sessions
+                    using your browser's local storage. This data is not accessible by the developer.
+                </p>
+                </p>
+                <h1>This Website is Open Source</h1>
+                <p>
+                    Source Code and License:
+                    <a href="https://github.com/CAG2Mark/MathsTest2024" target="_blank">GitHub</a>,
+                    <a href="https://github.com/CAG2Mark/MathsTest2024/blob/main/LICENSE.md">AGPL v3 License</a>.
+                </p>
+                <h1>Open Source Licenses</h1>
+                <p>
+                    KaTeX: <a href="https://github.com/KaTeX/KaTeX/blob/main/LICENSE" target="_blank">MIT License</a>.
+                </p>
+                <p>
+                    wasm-math-evaluator:
+                    <a href="https://github.com/CAG2Mark/wasm-math-evaluator/" target="_blank">GitHub</a>,
+                    <a href="https://github.com/CAG2Mark/wasm-math-evaluator/blob/main/LICENSE.md" target="_blank">GPL
+                        v2 License</a>.
+                </p>
+                <p>
+                    Inter Font: <a href="fonts/inter/license.txt" target="_blank">OFL License</a>.
+                </p>
+                <p>
+                    JetBrains Mono Font: <a href="fonts/JetBrains-Mono-LICENSE-OFL.txt" target="_blank">OFL License</a>.
+                </p>
+                <p>
+                    Material icons: <a href="fonts/material-icons-LICENSE-APACHE.txt" target="_blank">Apache
+                        License</a>.
+                </p>
+
+            </div>
+            <div id="tutorial-page" class="main-page content-page">
                 <h1>Tutorial</h1>
                 <p>
                     When asked for an answer, you will need to input a mathematical expression.
@@ -246,7 +299,7 @@
                 </p>
                 <div class="math-input" id="tut4"></div>
             </div>
-            <div data-question-name="easy" class="main-page question-page">
+            <div data-question-name="easy" class="main-page question-page content-page">
                 <h1>
                     Simple Trigonometry
                 </h1>
@@ -255,7 +308,7 @@
                 </p>
                 <div class="math-input" data-answer-name="ans"></div>
             </div>
-            <div data-question-name="unixtime" class="main-page question-page">
+            <div data-question-name="unixtime" class="main-page question-page content-page">
                 <h1>Detroit: Become Creepy</h1>
                 <p>
                     At what Unix time (in seconds) did CAG2 change his MC username to CAG2? (Hint: NameMC shows it in
@@ -263,7 +316,7 @@
                 </p>
                 <div class="math-input" data-answer-name="ans"></div>
             </div>
-            <div data-question-name="profile" class="main-page question-page">
+            <div data-question-name="profile" class="main-page question-page content-page">
                 <h1>Garlic Phone Animation</h1>
                 <p>
                     Suppose CAG2's profile picture spins clockwise at a rate of $2918572878278522^\circ$ per second.
@@ -273,7 +326,7 @@
                 </p>
                 <div class="math-input" data-answer-name="ans"></div>
             </div>
-            <div data-question-name="empirical" class="main-page question-page">
+            <div data-question-name="empirical" class="main-page question-page content-page">
                 <h1>Empirically Empirical</h1>
                 <p>
                     Suppose the $\mu$-ness of $\mathcal{R}$, denoted $\sigma(\mathcal{R})$ is related to its $v$-ness
@@ -300,7 +353,7 @@
                 </p>
                 <div class="math-input" data-answer-name="ans"></div>
             </div>
-            <div data-question-name="leapyear" class="main-page question-page">
+            <div data-question-name="leapyear" class="main-page question-page content-page">
                 <h1>Leap of Faith</h1>
                 <p>
                     What is the probability that a randomly, uniformly picked day is the 29th of February?
@@ -312,7 +365,7 @@
                 </p>
                 <div class="math-input" data-answer-name="ans"></div>
             </div>
-            <div data-question-name="passant" class="main-page question-page">
+            <div data-question-name="passant" class="main-page question-page content-page">
                 <h1>Google En Passant</h1>
                 <p>
                     In chess, a pawn can move ahead two squares on its first move. If it does so, and lands adjacent to
@@ -343,7 +396,7 @@
                 <div class="math-input" data-answer-name="ans"></div>
             </div>
 
-            <div data-question-name="quadratic" class="main-page question-page">
+            <div data-question-name="quadratic" class="main-page question-page content-page">
                 <h1>Cos why not.</h1>
                 <p>
                     Consider the quadratic function:
@@ -355,7 +408,7 @@
                 <div class="math-input" data-answer-name="ans"></div>
             </div>
 
-            <div data-question-name="panda" class="main-page question-page">
+            <div data-question-name="panda" class="main-page question-page content-page">
                 <h1>ren pamdy</h1>
                 <p>
                     Suppose there are $20$ red pandas in a zoo and there are $3$ zookeepers who have been assigned to
@@ -373,7 +426,7 @@
 
                 <div class="math-input" data-answer-name="ans"></div>
             </div>
-            <div data-question-name="rotation" class="main-page question-page">
+            <div data-question-name="rotation" class="main-page question-page content-page">
                 <h1>spinspinspinspin</h1>
                 <p>
                     Consider the matrix for $(a, b) \neq (0, 0)$:
@@ -381,9 +434,10 @@
                     A = \begin{bmatrix}
                     a & -b\\
                     b & a
-                    \end{bmatrix}
+                    \end{bmatrix}.
                     \]
-                    First, show that $A$ is a rotation matrix multiplied by some constant $c$, and give that value of $c$.
+                    First, show that $A$ is a rotation matrix multiplied by some constant $c$, and give that value of
+                    $c$.
                 </p>
                 <div class="math-input" data-answer-name="constant"></div>
                 <p>
@@ -407,7 +461,7 @@
                 </p>
                 <div class="math-input" data-answer-name="jj"></div>
             </div>
-            <div data-question-name="recursion" class="main-page question-page">
+            <div data-question-name="recursion" class="main-page question-page content-page">
                 <h1>HHHHHHHHHHHHHHH!</h1>
                 <p>
                     For $a, b \in \mathbb R$, consider the function $H$ defined on the non-negative integers $n, k \geq
@@ -427,7 +481,7 @@
                 </p>
                 <div class="math-input" data-answer-name="ans"></div>
             </div>
-            <div data-question-name="hastring" class="main-page question-page">
+            <div data-question-name="hastring" class="main-page question-page content-page">
                 <h1>HAHAHAHAHAHAHAH!</h1>
                 <p>
                     A $HA$-string is a string of uppercase characters that can be permuted into a sequence of zero or
@@ -443,7 +497,7 @@
                 </p>
                 <div class="math-input" data-answer-name="ans"></div>
             </div>
-            <div data-question-name="hagoteem" class="main-page question-page">
+            <div data-question-name="hagoteem" class="main-page question-page content-page">
                 <h1>BAHAHAHAHAHAHAH!</h1>
                 <p>
                     A $HA$-$GOTEEM$-string is a string of uppercase characters such that its Levenshtein distance from
@@ -462,7 +516,7 @@
                 </p>
                 <div class="math-input" data-answer-name="ans"></div>
             </div>
-            <div data-question-name="analytic" class="main-page question-page">
+            <div data-question-name="analytic" class="main-page question-page content-page">
                 <h1>isomorphism?????</h1>
                 <p>
                     Suppose an (analytic) function $f(x)$ on $\mathbb{R}$ is characterised by
@@ -477,7 +531,7 @@
                 </p>
                 <div class="math-input" data-answer-name="howmany"></div>
             </div>
-            <div data-question-name="derivative" class="main-page question-page">
+            <div data-question-name="derivative" class="main-page question-page content-page">
                 <h1>“cannot do” - a prof</h1>
                 <p>
                     Let $f : \mathbb{R} \to \mathbb{R}$ be differentiable at $x_0$. Let:
@@ -503,7 +557,7 @@
 
                 <div class="math-input" data-answer-name="ans"></div>
             </div>
-            <div data-question-name="checkers" class="main-page question-page">
+            <div data-question-name="checkers" class="main-page question-page content-page">
                 <h1>Now the fun begins</h1>
                 <p>
                     Suppose you want to arrange red and green checkers on an $8 \times 8$ red and green checkboard in a
@@ -522,7 +576,7 @@
                 </p>
                 <div class="math-input" data-answer-name="ans"></div>
             </div>
-            <div data-question-name="fibonacci" class="main-page question-page">
+            <div data-question-name="fibonacci" class="main-page question-page content-page">
                 <h1>Fibonacci (Nice)</h1>
                 <p>
                     Recall the Fibonacci numbers $F_n := 1, 1, 2, 3, 5, 8, 13, \cdots$.
@@ -535,9 +589,6 @@
                     If you do not like the notion of drawing a random integer that could be arbitrarily large, find or
                     bound the probability with the restriction $x_1, x_2 &lt; N$ for any $N$ and take $N \to \infty$.
                 </p>
-                <div class="math-input" data-answer-name="ans"></div>
-            </div>
-            <div data-question-name="dummy" class="main-page question-page">
                 <div class="math-input" data-answer-name="ans"></div>
             </div>
         </div>

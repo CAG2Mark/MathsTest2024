@@ -219,7 +219,7 @@ body {
     box-sizing: border-box;
 }
 
-.main-page > p .katex-display {
+.content-page > p .katex-display {
     overflow-x: auto;
     overflow-y: hidden;
 }
@@ -228,14 +228,50 @@ body {
     font-size: 1em !important;
 }
 
-.main-page > *:not(h1):not(.math-input-error-area *):not(button) {
+.content-page > *:not(h1):not(h2):not(.math-input-error-area *):not(button) {
     font-family: 'KaTeX_Main', Georgia, 'Times New Roman', Times, serif;
     font-size: 1.21em;
 }
 
-.main-page > .math-input {
+.content-page > .math-input {
     width: calc(100% + 4px);
     margin-left: -2px;
+}
+
+#info-page a {
+    color: white;
+    border-radius: 6px;
+    background-color: #ffffff17;
+
+    padding: 0 4px;
+    text-decoration: none;
+
+    transition: background-color 250ms ease;
+}
+
+#info-page a:hover {
+    background-color: #ffffff24;
+}
+
+#info-page a::after {
+    content: ' open_in_new';
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    line-height: 1;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    font-feature-settings: 'liga';
+    -webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+    vertical-align: middle;
+    margin-bottom: 1px;
+    margin-left: 3px;
+    color: #aaaaaa;
 }
 
 hr {
