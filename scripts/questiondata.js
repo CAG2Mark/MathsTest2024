@@ -321,7 +321,7 @@ function setupCheckpointPage(page, checkpoint) {
         idxes.push(qIdx);
     }
 
-    idxes.sort();
+    idxes.sort((a, b) => a - b);
     
     for (let i = 0; i < idxes.length; ++i) {
         let qIdx = idxes[i];
