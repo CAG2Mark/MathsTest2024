@@ -99,7 +99,6 @@ export class Checkpoint {
             let qString = "";
 
             let ansFields = Object.entries(q.answerFields);
-            console.log(ansFields);
             ansFields.sort((a, b) => a[0].localeCompare(b[0]));
 
             for (let j = 0; j < ansFields.length; ++j) {

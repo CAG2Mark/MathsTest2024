@@ -83,13 +83,25 @@
                     <span class="inline-circle"></span>
                     <span class="question-name">Google En Passant</span>
                 </button>
-                <button data-question-name="panda" class="question-sidebar-button sidebar-button">
+                <button data-question-name="quadratic" class="question-sidebar-button sidebar-button">
                     <span class="inline-circle"></span>
-                    <span class="question-name">ren pamdy</span>
+                    <span class="question-name">Cos why not.</span>
                 </button>
                 <button data-checkpoint-name="cp2" class="checkpoint-sidebar-button sidebar-button">
                     <span class="inline-big material-icons">flag</span>
                     <span><strong>Checkpoint 2</strong></span>
+                </button>
+                <button data-question-name="panda" class="question-sidebar-button sidebar-button">
+                    <span class="inline-circle"></span>
+                    <span class="question-name">ren pamdy</span>
+                </button>
+                <button data-question-name="rotation" class="question-sidebar-button sidebar-button">
+                    <span class="inline-circle"></span>
+                    <span class="question-name">spinspinspinspin</span>
+                </button>
+                <button data-checkpoint-name="cp3" class="checkpoint-sidebar-button sidebar-button">
+                    <span class="inline-big material-icons">flag</span>
+                    <span><strong>Checkpoint 3</strong></span>
                 </button>
                 <button data-question-name="recursion" class="question-sidebar-button sidebar-button">
                     <span class="inline-circle"></span>
@@ -103,9 +115,9 @@
                     <span class="inline-circle"></span>
                     <span class="question-name">BAHAHAHAHAHAHAH!</span>
                 </button>
-                <button data-checkpoint-name="cp3" class="checkpoint-sidebar-button sidebar-button">
+                <button data-checkpoint-name="cp4" class="checkpoint-sidebar-button sidebar-button">
                     <span class="inline-big material-icons">flag</span>
-                    <span><strong>Checkpoint 3</strong></span>
+                    <span><strong>Checkpoint 4</strong></span>
                 </button>
                 <button data-question-name="analytic" class="question-sidebar-button sidebar-button">
                     <span class="inline-circle"></span>
@@ -115,9 +127,9 @@
                     <span class="inline-circle"></span>
                     <span class="question-name">&quot;cannot do&quot; - a prof</span>
                 </button>
-                <button data-checkpoint-name="cp4" class="checkpoint-sidebar-button sidebar-button">
+                <button data-checkpoint-name="cp5" class="checkpoint-sidebar-button sidebar-button">
                     <span class="inline-big material-icons">flag</span>
-                    <span><strong>Checkpoint 4</strong></span>
+                    <span><strong>Checkpoint 5</strong></span>
                 </button>
                 <button data-question-name="checkers" class="question-sidebar-button sidebar-button">
                     <span class="inline-circle"></span>
@@ -127,9 +139,9 @@
                     <span class="inline-circle"></span>
                     <span class="question-name">Fibonacci (Nice)</span>
                 </button>
-                <button data-checkpoint-name="cp5" class="checkpoint-sidebar-button sidebar-button">
+                <button data-checkpoint-name="cp6" class="checkpoint-sidebar-button sidebar-button">
                     <span class="inline-big material-icons">flag</span>
-                    <span><strong>Checkpoint 5</strong></span>
+                    <span><strong>Checkpoint 6</strong></span>
                 </button>
                 <button data-question-name="dummy" class="question-sidebar-button sidebar-button">
                     <span class="inline-circle"></span>
@@ -197,7 +209,9 @@
                 <h1>Tutorial</h1>
                 <p>
                     When asked for an answer, you will need to input a mathematical expression.
-                    This could be a number or a function, depending on the question.
+                    This could be a number or a function, depending on the question. <strong>Your answer
+                        will be checked to a higher precision than most calculators can handle, so
+                        please input your answers exactly</strong> (or, if you must, to 25 significant figures. :P)
                 </p>
                 <p>
                     For example, if the answer is $4$, you can input <span class="mono">4</span>,
@@ -328,6 +342,19 @@
 
                 <div class="math-input" data-answer-name="ans"></div>
             </div>
+
+            <div data-question-name="quadratic" class="main-page question-page">
+                <h1>Cos why not.</h1>
+                <p>
+                    Consider the quadratic function:
+                    \[
+                    f(x) = x^2 \sin^2 a + 2x \cos a + 1
+                    \]
+                    What is the smallest positive value of $a$ such that $f(x)$ has a root at $x = 1$?
+                </p>
+                <div class="math-input" data-answer-name="ans"></div>
+            </div>
+
             <div data-question-name="panda" class="main-page question-page">
                 <h1>ren pamdy</h1>
                 <p>
@@ -339,7 +366,46 @@
                     there to assign each red panda to a zookeeper so that this requirement is met?
                 </p>
 
+                <p>
+                    (Hint: $|A \cup B \cup C| = |A| + |B| + |C| - |A \cap B| - |B \cap C| - |C \cap A| + |A \cap B \cap
+                    C|$.)
+                </p>
+
                 <div class="math-input" data-answer-name="ans"></div>
+            </div>
+            <div data-question-name="rotation" class="main-page question-page">
+                <h1>spinspinspinspin</h1>
+                <p>
+                    Consider the matrix for $(a, b) \neq (0, 0)$:
+                    \[
+                    A = \begin{bmatrix}
+                    a & -b\\
+                    b & a
+                    \end{bmatrix}
+                    \]
+                    First, show that $A$ is a rotation matrix multiplied by some constant $c$, and give that value of $c$.
+                </p>
+                <div class="math-input" data-answer-name="constant"></div>
+                <p>
+                    Now, give a closed form formula for $A^n$ for integers $n$, which is also a $2 \times 2$ matrix.
+                </p>
+
+                <p>
+                    Top left term of $A^n$:
+                </p>
+                <div class="math-input" data-answer-name="ii"></div>
+                <p>
+                    Top right term of $A^n$:
+                </p>
+                <div class="math-input" data-answer-name="ij"></div>
+                <p>
+                    Bottom left term of $A^n$:
+                </p>
+                <div class="math-input" data-answer-name="ji"></div>
+                <p>
+                    Bottom right term of $A^n$:
+                </p>
+                <div class="math-input" data-answer-name="jj"></div>
             </div>
             <div data-question-name="recursion" class="main-page question-page">
                 <h1>HHHHHHHHHHHHHHH!</h1>
@@ -356,6 +422,9 @@
                     \]
                     Find a closed form expression for $H(n, k)$ in terms of $n, k, a, b$. You may assume $a + b \neq 1$.
                 </p>
+                <p>
+                    (Hint: Try solving it for $a = 1, b = 1$ first.)
+                </p>
                 <div class="math-input" data-answer-name="ans"></div>
             </div>
             <div data-question-name="hastring" class="main-page question-page">
@@ -367,7 +436,8 @@
                     $HAHAAHAA$ is not a $HA$-string. The empty string is a $HA$-string.
                 </p>
                 <p>
-                    How many $HA$-strings of length $n \geq 0$ are there? You can type <span class="mono">floor(x)</span> to
+                    How many $HA$-strings of length $n$ are there for $n \geq 0$? You can type <span
+                        class="mono">floor(x)</span> to
                     represent $\lfloor x \rfloor$ and <span class="mono">ceil(x)</span> to
                     represent $\lceil x \rceil$.
                 </p>
@@ -384,7 +454,7 @@
                     For example: $GAH$, $HA$ and $AAAGHHH$ are all $HA$-$GOTEEM$ strings.
                 </p>
                 <p>
-                    How many $HA$-$GOTEEM$-strings of length $n \geq 0$ are there?
+                    How many $HA$-$GOTEEM$-strings of length $n$ are there for $n \geq 0$?
                 </p>
                 <p>
                     You may assume that $\binom{a}{b} = 0$ for $a, b \in \mathbb Z$ if $a &lt; b$ or $b &lt; 0$. You
@@ -448,7 +518,7 @@
                     counts as a valid arrangement.
                 </p>
                 <p>
-                    (Hint: There is no general formula.)
+                    Note: There is no general formula.
                 </p>
                 <div class="math-input" data-answer-name="ans"></div>
             </div>
