@@ -1,1 +1,0 @@
-xdg-open localhost:8080 & python -m http.server --directory . 8080 
