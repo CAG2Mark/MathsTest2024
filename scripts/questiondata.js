@@ -153,10 +153,6 @@ export class Checkpoint {
         let hash = sha256(ansString);
         let twiceHash = sha256(hash);
 
-        console.log(ansString);
-
-        console.log(twiceHash);
-
         if (twiceHash == this.twiceHash) {
             this.displaySuccess(hash);
         } else {
