@@ -285,7 +285,7 @@ hr {
  
 /* Track */
 ::-webkit-scrollbar-track {
-    background: #1a1a1a;
+    background: transparent;
 }
   
 /* Handle */
