@@ -387,7 +387,7 @@
         { 
             "name": "cp3", 
             "depends": ["panda", "rotation"],
-            "twiceHash": "949bbbebb09acc7a793613019f1d864e6213b6d8444d9a7b5a5714c3be43dbe4"
+            "twiceHash": "098fbbb0a462c2076fa79b95360f5491995c006173e142e7f1917d562231d42d"
         },
         { 
             "name": "cp4", 
