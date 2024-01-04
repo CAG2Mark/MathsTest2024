@@ -513,8 +513,8 @@
                     \[
                     H(n,k) = \begin{cases}
                     1 & n = 0, k = 0\\
-                    1 + aH(k-1, 0) + bH(0, k-1) & n = 0\\
-                    1 + aH(n-1, 0) + bH(0, n-1) & k = 0\\
+                    1 + aH(k-1, 0) + bH(0, k-1) & n = 0, k \neq 0\\
+                    1 + aH(n-1, 0) + bH(0, n-1) & n \neq 0, k = 0\\
                     1 + aH(n-1, k) + bH(n, k-1) & \text{otherwise}.
                     \end{cases}
                     \]
