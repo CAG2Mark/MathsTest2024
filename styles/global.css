@@ -178,17 +178,12 @@ body {
     
     width: 100%;
     height: 100%;
-    scrollbar-width: none;
 
     overflow-y: auto;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-}
-
-#question-sidebar::-webkit-scrollbar {
-    display: none;
 }
 
 #question-sidebar-wrap {
