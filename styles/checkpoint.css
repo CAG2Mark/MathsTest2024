@@ -92,4 +92,5 @@
     margin-top: 8px;
     box-sizing: border-box;
     user-select: all;
+    word-wrap: break-word;
 }
