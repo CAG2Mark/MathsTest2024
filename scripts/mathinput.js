@@ -56,7 +56,7 @@ function roundToInt(mantissaStr, exp) {
     return roundToSigfig(mantissaStr, Math.max(0, Math.min(40, exp + 1)));
 }
 
-function sanitize(text) {
+export function sanitize(text) {
     return text.replace("&", "&amp;")
         .replace("\"", "&quot;")
         .replace("\'", "&#039;")

@@ -1,4 +1,4 @@
-import { AnswerType, formatError } from "./mathinput.js";
+import { AnswerType, formatError, sanitize } from "./mathinput.js";
 import { check_expr } from "../lib/wasm-math-evaluator/wasm_math_evaluator.js";
 
 let code = (function () {
@@ -65,7 +65,7 @@ export class Checkpoint {
         if (ign) {
             codePage.style.display = "block";
             noIgnPage.style.display = "none";
-            this.successPageOutput.innerHTML = code.encryptMessage(ign, hash);
+            this.successPageOutput.innerHTML = sanitize(code.encryptMessage(ign, hash));
         } else {
             codePage.style.display = "none";
             noIgnPage.style.display = "block";
@@ -445,13 +445,18 @@ function initIgn() {
             for (let i = 0; i < entries.length; ++i) {
                 let [name, cpt] = entries[i];
                 let hash = cpt.check();
-                let decrypted = code.decryptMessage(spl[1].trim(), hash);
-                if (decrypted) {
-                    setTimeout(() => {
-                        ignInput.value = name + " " + decrypted;
-                    }, 50);
-                    return;
+                try {
+                    let decrypted = code.decryptMessage(spl[1].trim(), hash);
+                    if (decrypted) {
+                        setTimeout(() => {
+                            ignInput.value = name + " " + decrypted;
+                        }, 50);
+                        return;
+                    }
+                } catch (error) {
+                    continue;   
                 }
+
             }
         }
     })
