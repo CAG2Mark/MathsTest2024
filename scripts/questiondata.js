@@ -1,18 +1,18 @@
 import { AnswerType, formatError } from "./mathinput.js";
 import { check_expr } from "../lib/wasm-math-evaluator/wasm_math_evaluator.js";
 
-let code = (function(){
-    return{
-      encryptMessage: function(messageToencrypt = '', secretkey = ''){
-        var encryptedMessage = CryptoJS.AES.encrypt(messageToencrypt, secretkey);
-        return encryptedMessage.toString();
-      },
-      decryptMessage: function(encryptedMessage = '', secretkey = ''){
-        var decryptedBytes = CryptoJS.AES.decrypt(encryptedMessage, secretkey);
-        var decryptedMessage = decryptedBytes.toString(CryptoJS.enc.Utf8);
+let code = (function () {
+    return {
+        encryptMessage: function (messageToencrypt = '', secretkey = '') {
+            var encryptedMessage = CryptoJS.AES.encrypt(messageToencrypt, secretkey);
+            return encryptedMessage.toString();
+        },
+        decryptMessage: function (encryptedMessage = '', secretkey = '') {
+            var decryptedBytes = CryptoJS.AES.decrypt(encryptedMessage, secretkey);
+            var decryptedMessage = decryptedBytes.toString(CryptoJS.enc.Utf8);
 
-        return decryptedMessage;
-      }
+            return decryptedMessage;
+        }
     }
 })();
 
@@ -39,7 +39,7 @@ export class Checkpoint {
         saveCheckpointProgress();
     }
 
-    undoSuccessActions(){
+    undoSuccessActions() {
         let depends = this.dependsOn;
         for (let i = 0; i < depends.length; ++i) {
             let qName = depends[i];
@@ -61,7 +61,7 @@ export class Checkpoint {
         let codePage = this.successPage.getElementsByClassName("checkpoint-success-ign")[0];
         let noIgnPage = this.successPage.getElementsByClassName("checkpoint-success-noign")[0];
 
-        let ign = ignInput.value;
+        let ign = ignInput.value.trim();
         if (ign) {
             codePage.style.display = "block";
             noIgnPage.style.display = "none";
@@ -78,12 +78,12 @@ export class Checkpoint {
         if (undefQues) {
             this.errorFailMoreInfo.style.display = "inline";
             this.errorFailMoreInfoPill.innerHTML = questionIdx[undefQues] + 1;
-            
+
             let undefText = "";
             let entries = Object.entries(undefInputs);
             entries.forEach(([name, val], idx) => {
                 undefText += name + " = " + check_expr(val, []).latex;
-                if (idx != entries.length - 1) 
+                if (idx != entries.length - 1)
                     undefText += ", \\ "
             })
 
@@ -132,7 +132,7 @@ export class Checkpoint {
             for (let j = 0; j < ansFields.length; ++j) {
                 let ansField = ansFields[j][1];
                 let inpBox = ansField.inputBox;
-                
+
                 let res = inpBox.eval();
                 // Check if any inputs are NaN or inf
                 if (!undefQues && res[2]) {
@@ -154,7 +154,7 @@ export class Checkpoint {
         let twiceHash = sha256(hash);
 
         console.log(ansString);
-        
+
         console.log(twiceHash);
 
         if (twiceHash == this.twiceHash) {
@@ -162,6 +162,8 @@ export class Checkpoint {
         } else {
             this.displayFail(undefQues, undefInput);
         }
+
+        return hash;
     }
 
     assignPage(page) {
@@ -181,7 +183,7 @@ export class Checkpoint {
         this.errorFailMoreInfo = page.getElementsByClassName("checkpoint-fail-more-info")[0];
         this.errorFailMoreInfoPill = page.getElementsByClassName("checkpoint-fail-question")[0];
         this.errorFailMoreInfoInputs = page.getElementsByClassName("checkpoint-fail-inputs")[0];
-        
+
 
         this.checkButton.addEventListener("click", (e) => this.check());
     }
@@ -216,7 +218,6 @@ export class AnswerField {
 
 export class QuestionProgress {
     constructor(question) {
-        this.customVariables = {};
         this.answers = {};
 
         let fields = Object.entries(question.answerFields);
@@ -261,7 +262,7 @@ function parseAnswerField(ans, questionName) {
         }
         return new AnswerField(name, ty, isInt, questionName, inputs, tests);
     } else {
-        return new AnswerField(name, ty, isInt,  questionName);
+        return new AnswerField(name, ty, isInt, questionName);
     }
 }
 
@@ -309,7 +310,7 @@ function loadProgress() {
     let data = Object.entries(questionData);
     data.forEach(([name, ques], _1, _2) => {
         questionProgress[name] = new QuestionProgress(ques);
-    });  
+    });
 
     let progress = JSON.parse(localStorage.getItem("savedAnswers"));
     if (!progress) return;
@@ -317,10 +318,8 @@ function loadProgress() {
     data.forEach(([name, _0], _1, _2) => {
         let qp = questionProgress[name];
         let saved = progress[name];
-        
-        if (!saved) return;
 
-        qp.customVariables = saved.customVariables;
+        if (!saved) return;
 
         if (!saved) return;
 
@@ -330,14 +329,14 @@ function loadProgress() {
             if (!savedAns) return;
             qp.answers[ansName] = savedAns;
         });
-    });  
+    });
 }
 
 function setupCheckpointPage(page, checkpoint) {
     checkpoint.assignPage(page);
-    
+
     let depends = checkpoint.dependsOn;
-    
+
     let qList = page.getElementsByClassName("checkpoint-question-list")[0];
     qList.innerHTML = "";
 
@@ -350,7 +349,7 @@ function setupCheckpointPage(page, checkpoint) {
     }
 
     idxes.sort((a, b) => a - b);
-    
+
     for (let i = 0; i < idxes.length; ++i) {
         let qIdx = idxes[i];
         qList.innerHTML += "<span class=\"inline-circle\">" + (qIdx + 1) + "</span>";
@@ -403,12 +402,12 @@ function initAllMathInputs() {
         for (let i = 0; i < elems.length; ++i) {
             let elem = elems[i];
             if (elem.id == "math-input-template") continue;
-            
+
             let ansName = elem.dataset.answerName;
 
             let ansField = q.answerFields[ansName];
-            
-            let mathInput = initMathInput(elem); 
+
+            let mathInput = initMathInput(elem);
             ansField.assignInputBox(mathInput);
 
             mathInput.assignAnswerField(ansField);
@@ -431,7 +430,39 @@ function initAllMathInputs() {
     });
 }
 
+function initIgn() {
+    let item = window.localStorage.getItem("ign");
+    if (item) {
+        ignInput.value = item;
+    }
+
+    ignInput.addEventListener("input", (e) => {
+        let val = ignInput.value.trim();
+
+        window.localStorage.setItem("ign", val);
+
+        if (ignInput.value.trim().startsWith("decrypt")) {
+            let spl = val.split(" ");
+            if (spl.length < 2) return;
+
+            let entries = Object.entries(checkpointData);
+            for (let i = 0; i < entries.length; ++i) {
+                let [name, cpt] = entries[i];
+                let hash = cpt.check();
+                let decrypted = code.decryptMessage(spl[1].trim(), hash);
+                if (decrypted) {
+                    setTimeout(() => {
+                        ignInput.value = name + " " + decrypted;
+                    }, 50);
+                    return;
+                }
+            }
+        }
+    })
+}
+
 export function initData(callback) {
     discoverQuestions();
+    initIgn();
     fetchQuestions(callback);
 }
