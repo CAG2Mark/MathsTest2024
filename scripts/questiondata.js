@@ -1,6 +1,23 @@
 import { AnswerType, formatError } from "./mathinput.js";
 import { check_expr } from "../lib/wasm-math-evaluator/wasm_math_evaluator.js";
 
+let code = (function(){
+    return{
+      encryptMessage: function(messageToencrypt = '', secretkey = ''){
+        var encryptedMessage = CryptoJS.AES.encrypt(messageToencrypt, secretkey);
+        return encryptedMessage.toString();
+      },
+      decryptMessage: function(encryptedMessage = '', secretkey = ''){
+        var decryptedBytes = CryptoJS.AES.decrypt(encryptedMessage, secretkey);
+        var decryptedMessage = decryptedBytes.toString(CryptoJS.enc.Utf8);
+
+        return decryptedMessage;
+      }
+    }
+})();
+
+let ignInput = document.getElementById("ign-input");
+
 export class Checkpoint {
     constructor(name, dependsOn, twiceHash) {
         this.name = name;
@@ -36,12 +53,23 @@ export class Checkpoint {
         saveCheckpointProgress();
     }
 
-    displaySuccess(code) {
+    displaySuccess(hash) {
         this.errorPage.style.display = "none";
         this.successPage.style.display = "block";
         this.failPage.style.display = "none";
 
-        this.successPageOutput.innerHTML = code;
+        let codePage = this.successPage.getElementsByClassName("checkpoint-success-ign")[0];
+        let noIgnPage = this.successPage.getElementsByClassName("checkpoint-success-noign")[0];
+
+        let ign = ignInput.value;
+        if (ign) {
+            codePage.style.display = "block";
+            noIgnPage.style.display = "none";
+            this.successPageOutput.innerHTML = code.encryptMessage(ign, hash);
+        } else {
+            codePage.style.display = "none";
+            noIgnPage.style.display = "block";
+        }
 
         this.doSuccessActions();
     }

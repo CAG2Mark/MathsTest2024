@@ -75,6 +75,7 @@
                     <span class="inline-big material-icons">flag</span>
                     <span><strong>Checkpoint 1</strong></span>
                 </button>
+                <hr class="mo-mobile">
                 <button data-question-name="leapyear" class="question-sidebar-button sidebar-button">
                     <span class="inline-circle"></span>
                     <span class="question-name">Leap of Faith</span>
@@ -91,6 +92,7 @@
                     <span class="inline-big material-icons">flag</span>
                     <span><strong>Checkpoint 2</strong></span>
                 </button>
+                <hr class="mo-mobile">
                 <button data-question-name="panda" class="question-sidebar-button sidebar-button">
                     <span class="inline-circle"></span>
                     <span class="question-name">ren pamdy</span>
@@ -103,6 +105,7 @@
                     <span class="inline-big material-icons">flag</span>
                     <span><strong>Checkpoint 3</strong></span>
                 </button>
+                <hr class="mo-mobile">
                 <button data-question-name="recursion" class="question-sidebar-button sidebar-button">
                     <span class="inline-circle"></span>
                     <span class="question-name">HHHHHHHHHHHHHHH!</span>
@@ -119,18 +122,20 @@
                     <span class="inline-big material-icons">flag</span>
                     <span><strong>Checkpoint 4</strong></span>
                 </button>
+                <hr class="mo-mobile">
                 <button data-question-name="analytic" class="question-sidebar-button sidebar-button">
                     <span class="inline-circle"></span>
                     <span class="question-name">isomorphism?????</span>
                 </button>
                 <button data-question-name="derivative" class="question-sidebar-button sidebar-button">
                     <span class="inline-circle"></span>
-                    <span class="question-name">&quot;cannot do&quot; - a prof</span>
+                    <span class="question-name">“cannot do” - a prof - a prof</span>
                 </button>
                 <button data-checkpoint-name="cp5" class="checkpoint-sidebar-button sidebar-button">
                     <span class="inline-big material-icons">flag</span>
                     <span><strong>Checkpoint 5</strong></span>
                 </button>
+                <hr class="mo-mobile">
                 <button data-question-name="checkers" class="question-sidebar-button sidebar-button">
                     <span class="inline-circle"></span>
                     <span class="question-name">Now the fun begins</span>
@@ -159,11 +164,19 @@
             <button class="check-answers-button">Check Answers</button>
             <div class="checkpoint-output-box vert-center">
                 <div class="checkpoint-success" style="display: none;">
-                    All checked answers are correct. Checkpoint code:
-                    <br>
-                    <div class="checkpoint-code-output monospaced">
-
-                    </div>
+                    <span class="checkpoint-success-ign" style="display: none">
+                        All checked answers are correct. Checkpoint code:
+                        <br>
+                        <div class="checkpoint-code-output monospaced">
+    
+                        </div>
+                    </span>
+                    <span class="checkpoint-success-noign" style="display: none">
+                        All checked answers are correct.
+                        <br>
+                        To get a checkpoint code,
+                        please enter your nickname/IGN on the first page.
+                    </span>
                 </div>
                 <div class="checkpoint-fail" style="display: none;">
                     Sorry, at least one of your answers are incorrect.
@@ -204,9 +217,15 @@
                     I am now using a custom-made maths library with some neat custom features.
                 </p>
                 <p>
-                    Well, what are you waiting for? Go ahead and enter your nickname/IGN and
-                    have fun(TM)!
+                    <strong>Please read the tutorial</strong> as the new math library works
+                    slightly differently from before.
                 </p>
+                <p>
+                    Well, what are you waiting for? Go ahead and enter your nickname/IGN and
+                    have fun(TM)! (If you do not want checkpoint codes, you do not need to enter your IGN.
+                    Your answers will be checked nonetheless).
+                </p>
+                <input id="ign-input" class="mono" type="text" placeholder="Pleae enter your nickname/IGN...">
             </div>
             <div id="info-page" class="main-page">
                 <h1>Privacy</h1>
@@ -222,7 +241,7 @@
                     Cloudflare's website for the purpose of viewing the privacy policy.
                 </p>
                 <p>
-                    All required libraries and files are in this website's repository, and thus no requests 
+                    All required libraries and files are in this website's repository, and thus no requests
                     are made to any server other than those CloudFlare's CDN.
                 </p>
                 <p>
@@ -452,7 +471,8 @@
                 </p>
                 <div class="math-input" data-answer-name="constant"></div>
                 <p>
-                    Now, give a closed form expession for $A^n$ for integers $n$. Note $A^n$ is also a $2 \times 2$ matrix.
+                    Now, give a closed form expession for $A^n$ for integers $n$. Note $A^n$ is also a $2 \times 2$
+                    matrix.
                     You may want to use the function <span class="mono">atan2(y, x)</span>.
                 </p>
 
@@ -608,6 +628,7 @@
 </body>
 
 <script src="lib/sha256.js"></script>
+<script src="lib/aes.js"></script>
 <script type="module" src="scripts/questiondata.js"></script>
 <script type="module" src="scripts/ui.js"></script>
 <script type="module" src="scripts/tutorial.js"></script>

@@ -271,6 +271,37 @@ body {
     color: #aaaaaa;
 }
 
+#ign-input {
+    resize: none;
+    color: white;
+    background-color: #292929;
+    border-radius: 8px;
+
+    transition: border-color 100ms ease;
+    border-radius: var(--textarea-radius);
+    border-style: solid;
+    border-color: #494949;
+    border-width: 2px;
+
+    padding: 8px;
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    touch-action: manipulation;
+
+    outline: none;
+}
+
+#ign-input {
+    border-color: #5c5c5c;
+}
+
+#ign-input:focus {
+    border-color: #2d6cc0;
+}
+
 hr {
     height: 2px;
     border-radius: 1px;
